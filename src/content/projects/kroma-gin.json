@@ -1,0 +1,34 @@
+{
+  "title": "Kroma Gin",
+  "client": "Destilería Alquimia Ficticia",
+  "category": "Packaging & Campaña",
+  "year": 2024,
+  "brief": "Crear el universo visual, diseño de botella y campaña de lanzamiento para una ginebra botánica destilada a base de flores silvestres del semidesierto.",
+  "concept": "Contraste deliberado entre la mística botánica ancestral y un diseño de etiquetas brutalista con tipografías serif distorsionadas y estampación holográfica.",
+  "deliverables": [
+    "Diseño estructural de botella y tapón en vidrio reciclado",
+    "Etiqueta con grabado en relieve y acabados foil",
+    "Dirección de fotografía para campaña editorial",
+    "Contenido digital y teasers animados para redes sociales"
+  ],
+  "heroImage": "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1600&q=80",
+  "gallery": [
+    {
+      "src": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Detalle del cristal facetado y refracción lumínica",
+      "span": "half"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Copa servida con botánicos deshidratados",
+      "span": "half"
+    }
+  ],
+  "colorPalette": ["#0E0B12", "#FF2A6D", "#F4F5F7", "#2D1B36"],
+  "credits": {
+    "artDirection": "Vórtice Creative Bureau",
+    "design": "Taller de Packaging Ficticio",
+    "development": "Equipo 3D Ficticio"
+  },
+  "featured": true
+}

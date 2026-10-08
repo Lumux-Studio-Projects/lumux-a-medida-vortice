@@ -1,0 +1,148 @@
+---
+// CursorFollower.astro
+// Interactive magnetic cursor with expanding text badges inspired by Extrafazant.nl
+---
+
+<div class="custom-cursor-root" id="customCursorRoot" aria-hidden="true">
+  <!-- Center cursor dot -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <!-- Trailing card / badge -->
+  <div class="cursor-follower" id="cursorFollower">
+    <span class="cursor-badge-text" id="cursorBadgeText">VIEW</span>
+  </div>
+</div>
+
+<style>
+  .custom-cursor-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99999;
+    overflow: hidden;
+  }
+
+  @media (pointer: coarse) {
+    .custom-cursor-root {
+      display: none !important;
+    }
+  }
+
+  .cursor-dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease;
+    will-change: transform;
+    opacity: 0;
+  }
+
+  .cursor-follower {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+    will-change: transform;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+  }
+
+  .cursor-badge-text {
+    line-height: 1;
+  }
+
+  /* Active states */
+  .custom-cursor-root.has-mouse .cursor-dot {
+    opacity: 1;
+  }
+
+  .custom-cursor-root.is-hovering .cursor-dot {
+    opacity: 0;
+  }
+
+  .custom-cursor-root.is-hovering .cursor-follower {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const root = document.getElementById('customCursorRoot');
+    const dot = document.getElementById('cursorDot');
+    const follower = document.getElementById('cursorFollower');
+    const textEl = document.getElementById('cursorBadgeText');
+
+    if (!root || !dot || !follower) return;
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let dotX = mouseX;
+    let dotY = mouseY;
+    let followerX = mouseX;
+    let followerY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      root.classList.add('has-mouse');
+    }, { passive: true });
+
+    // Detect elements with data-cursor-text
+    document.addEventListener('mouseover', (e) => {
+      const target = e.target.closest('[data-cursor-text]');
+      if (target) {
+        const text = target.getAttribute('data-cursor-text') || 'VIEW CASE →';
+        if (textEl) textEl.textContent = text;
+        root.classList.add('is-hovering');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      const target = e.target.closest('[data-cursor-text]');
+      if (target) {
+        root.classList.remove('is-hovering');
+      }
+    });
+
+    function loop() {
+      // Smooth lerp for dot
+      dotX += (mouseX - dotX) * 0.7;
+      dotY += (mouseY - dotY) * 0.7;
+      dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
+
+      // Smooth lag for follower badge
+      followerX += (mouseX - followerX) * 0.18;
+      followerY += (mouseY - followerY) * 0.18;
+      follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%) ${root.classList.contains('is-hovering') ? 'scale(1)' : 'scale(0)'}`;
+
+      requestAnimationFrame(loop);
+    }
+
+    requestAnimationFrame(loop);
+  })();
+</script>

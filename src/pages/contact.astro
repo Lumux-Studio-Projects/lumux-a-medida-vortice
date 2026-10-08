@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCreativeForm from '../components/ContactCreativeForm.astro';
+import siteData from '../data/site.json';
+---
+
+<BaseLayout 
+  title="Contact & Brief Intake" 
+  description="Initiate a 3D motion, viral social content, or 60fps WebGL project with Vórtice Creative Labs."
+>
+  <div class="page-header">
+    <div class="container">
+      <span class="tag-pill">
+        <span class="tag-dot"></span>
+        <span>DIRECT PROJECT INTAKE</span>
+      </span>
+      <h1 class="header-h1">LET'S MAKE SOMETHING <span class="heading-alt">UNIGNORABLE.</span></h1>
+      <p class="header-lead">
+        Submit your project brief below or reach out directly to schedule a 20-minute strategic exploration call.
+      </p>
+    </div>
+  </div>
+
+  <section class="contact-section">
+    <div class="container contact-grid">
+      <aside class="contact-info-col">
+        <div class="info-block">
+          <span class="sub-badge">STUDIO HUBS</span>
+          <h2 class="info-h2">AMSTERDAM & CDMX</h2>
+          <p class="info-p">{siteData.contact.address}</p>
+          <span class="hub-city">{siteData.brand.city}</span>
+        </div>
+
+        <div class="info-block">
+          <span class="sub-badge">DIRECT CHANNELS</span>
+          <div class="channels-list">
+            <div>
+              <span class="channel-lbl">Intake Email:</span>
+              <a href={`mailto:${siteData.contact.email}`} class="channel-val draw-line-link">{siteData.contact.email}</a>
+            </div>
+            <div>
+              <span class="channel-lbl">Direct Phone:</span>
+              <span class="channel-val">{siteData.contact.phone}</span>
+            </div>
+            <div>
+              <span class="channel-lbl">Instagram:</span>
+              <a href={siteData.contact.instagram} target="_blank" rel="noopener" class="channel-val draw-line-link">@vortice.bureau.demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block banner-box">
+          <span class="sub-badge">RAPID RESPONSE GUARANTEE</span>
+          <p class="banner-text">
+            We review new briefs within 4 business hours. If our sprint slots are full for the month, we will transparently recommend trusted peer studios.
+          </p>
+        </div>
+      </aside>
+
+      <div class="contact-form-col">
+        <ContactCreativeForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: clamp(4rem, 7vw, 6.5rem) 0 clamp(3rem, 5vw, 4.5rem);
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-h1 {
+    margin: 1.25rem 0 1.5rem;
+  }
+
+  .header-lead {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    max-width: 680px;
+  }
+
+  .contact-section {
+    padding: clamp(4rem, 7vw, 7.5rem) 0;
+    background-color: var(--color-bg-secondary);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  @media (min-width: 960px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+    }
+  }
+
+  .contact-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info-block {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+  }
+
+  .sub-badge {
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .info-h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+  }
+
+  .info-p {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.25rem;
+  }
+
+  .hub-city {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .channels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .channel-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.775rem;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .channel-val {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .banner-box {
+    border: 1px dashed var(--color-border);
+  }
+
+  .banner-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+</style>

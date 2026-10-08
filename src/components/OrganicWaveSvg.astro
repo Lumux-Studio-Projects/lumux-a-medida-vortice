@@ -1,0 +1,129 @@
+---
+interface Props {
+  height?: number;
+  class?: string;
+}
+
+const {
+  height = 90,
+  class: className = ""
+} = Astro.props;
+---
+
+<div class:list={["wave-container", className]} style={`--wave-height: ${height}px;`}>
+  <svg 
+    viewBox="0 0 1200 120" 
+    class="wave-svg" 
+    preserveAspectRatio="none" 
+    aria-hidden="true"
+  >
+    <defs>
+      <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="var(--color-accent)" stop-opacity="0.8" />
+        <stop offset="50%" stop-color="var(--color-accent-secondary, #FF5500)" stop-opacity="0.8" />
+        <stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0.8" />
+      </linearGradient>
+      <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="var(--color-text-primary)" stop-opacity="0.15" />
+        <stop offset="100%" stop-color="var(--color-text-primary)" stop-opacity="0.05" />
+      </linearGradient>
+    </defs>
+
+    <!-- Background undulating wave -->
+    <path 
+      class="wave-path wave-path-back" 
+      d="M0,60 C150,110 350,10 500,60 C650,110 850,10 1000,60 C1100,90 1150,75 1200,60 L1200,120 L0,120 Z" 
+      fill="url(#waveGrad2)"
+    />
+
+    <!-- Animated foreground motion line -->
+    <path 
+      class="wave-path wave-path-front" 
+      d="M0,60 Q300,10 600,60 T1200,60" 
+      fill="none" 
+      stroke="url(#waveGrad1)" 
+      stroke-width="3.5" 
+      stroke-linecap="round"
+    />
+
+    <!-- Ambient rhythm markers -->
+    <circle cx="300" cy="35" r="4.5" fill="var(--color-accent)" class="wave-dot wave-dot-1" />
+    <circle cx="600" cy="60" r="4.5" fill="var(--color-accent-secondary, #FF5500)" class="wave-dot wave-dot-2" />
+    <circle cx="900" cy="85" r="4.5" fill="var(--color-accent)" class="wave-dot wave-dot-3" />
+  </svg>
+</div>
+
+<style>
+  .wave-container {
+    width: 100%;
+    height: var(--wave-height);
+    overflow: hidden;
+    position: relative;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .wave-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .wave-path-front {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 0;
+    animation: flowWave 12s ease-in-out infinite alternate;
+  }
+
+  .wave-path-back {
+    animation: pulseWaveBack 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes flowWave {
+    0% {
+      d: path("M0,60 Q300,10 600,60 T1200,60");
+    }
+    50% {
+      d: path("M0,60 Q300,100 600,60 T1200,60");
+    }
+    100% {
+      d: path("M0,60 Q300,20 600,60 T1200,60");
+    }
+  }
+
+  @keyframes pulseWaveBack {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-8px);
+    }
+  }
+
+  .wave-dot-1 {
+    animation: floatDot 3s ease-in-out infinite alternate;
+  }
+
+  .wave-dot-2 {
+    animation: floatDot 3.5s ease-in-out infinite alternate-reverse;
+  }
+
+  .wave-dot-3 {
+    animation: floatDot 2.8s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatDot {
+    0% { transform: translateY(0); opacity: 0.4; }
+    100% { transform: translateY(-12px); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wave-path-front,
+    .wave-path-back,
+    .wave-dot-1,
+    .wave-dot-2,
+    .wave-dot-3 {
+      animation: none;
+    }
+  }
+</style>

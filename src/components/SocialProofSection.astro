@@ -1,0 +1,262 @@
+---
+// SocialProofSection.astro
+// Verified performance traction & client trust wall inspired by FeedForge & Extrafazant
+---
+
+<section class="social-proof-section" id="proof">
+  <!-- 1. Partner / Brand Logos Infinite Marquee -->
+  <div class="partners-marquee-row" aria-hidden="true">
+    <div class="marquee-label-bar">
+      <span>TRUSTED BY GLOBAL TEAMS & DISRUPTIVE BRANDS</span>
+    </div>
+    <div class="partners-track">
+      <div class="partners-group">
+        <span class="partner-logo-item">ODIDO ✦</span>
+        <span class="partner-logo-item">FONTYS ✦</span>
+        <span class="partner-logo-item">WILLEM II ✦</span>
+        <span class="partner-logo-item">JUMBO ✦</span>
+        <span class="partner-logo-item">JANZEN ✦</span>
+        <span class="partner-logo-item">ABLETON ✦</span>
+        <span class="partner-logo-item">LVMH LABS ✦</span>
+        <span class="partner-logo-item">SPOTIFY STUDIOS ✦</span>
+      </div>
+      <div class="partners-group" aria-hidden="true">
+        <span class="partner-logo-item">ODIDO ✦</span>
+        <span class="partner-logo-item">FONTYS ✦</span>
+        <span class="partner-logo-item">WILLEM II ✦</span>
+        <span class="partner-logo-item">JUMBO ✦</span>
+        <span class="partner-logo-item">JANZEN ✦</span>
+        <span class="partner-logo-item">ABLETON ✦</span>
+        <span class="partner-logo-item">LVMH LABS ✦</span>
+        <span class="partner-logo-item">SPOTIFY STUDIOS ✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Testimonials & Performance Growth Cards -->
+  <div class="container testimonials-container">
+    <div class="testimonials-header">
+      <span class="tag-pill">
+        <span class="tag-dot"></span>
+        <span>VERIFIED RESULTS</span>
+      </span>
+      <h2 class="proof-title">
+        Loved by founders. <span class="heading-alt">Feared by competitors.</span>
+      </h2>
+    </div>
+
+    <div class="proof-cards-grid">
+      <div class="proof-card">
+        <div class="proof-stat-badge">
+          <span class="proof-stat-num">+85%</span>
+          <span class="proof-stat-text">Conversion Rate Surge</span>
+        </div>
+        <p class="proof-quote">
+          “Vórtice transformed our launch from a flat technical spec sheet into an unignorable 3D sensory experience. Easily the highest ROI creative investment our team made all year.”
+        </p>
+        <div class="proof-author">
+          <div class="author-avatar">LV</div>
+          <div>
+            <div class="author-name">Liam Vance</div>
+            <div class="author-role">Head of Growth · Aether Spatial Audio</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-stat-badge">
+          <span class="proof-stat-num">3.8x</span>
+          <span class="proof-stat-text">Blended Social ROAS</span>
+        </div>
+        <p class="proof-quote">
+          “Zero slow agency bureaucracy. We had raw concepts on Monday and finalized photorealistic kinetic video reels in production by Friday. Their creative sprint pace is unmatched.”
+        </p>
+        <div class="proof-author">
+          <div class="author-avatar">ER</div>
+          <div>
+            <div class="author-name">Elena Rostova</div>
+            <div class="author-role">Brand Director · Kroma Botanicals</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-stat-badge">
+          <span class="proof-stat-num">60 FPS</span>
+          <span class="proof-stat-text">Flawless Mobile WebGL</span>
+        </div>
+        <p class="proof-quote">
+          “Most creative agencies build 3D prototypes that crash the browser on mobile. Vórtice delivered a breathtaking WebGL platform with sub-second loads and 100% custom code.”
+        </p>
+        <div class="proof-author">
+          <div class="author-avatar">MS</div>
+          <div>
+            <div class="author-name">Marcus Sterling</div>
+            <div class="author-role">VP Product · Hyper Mobility Core</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .social-proof-section {
+    padding: clamp(4rem, 7vw, 7rem) 0 clamp(5rem, 8vw, 8rem);
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .partners-marquee-row {
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.5rem 0 2rem;
+    margin-bottom: clamp(4rem, 7vw, 6.5rem);
+    overflow: hidden;
+  }
+
+  .marquee-label-bar {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.25rem;
+  }
+
+  .partners-track {
+    display: flex;
+    width: max-content;
+    animation: partnerScroll 30s linear infinite;
+  }
+
+  .partners-group {
+    display: flex;
+    gap: 3.5rem;
+    padding-right: 3.5rem;
+  }
+
+  .partner-logo-item {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+
+  .partner-logo-item:hover {
+    opacity: 1;
+    color: var(--color-accent);
+  }
+
+  @keyframes partnerScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Testimonials */
+  .testimonials-header {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+  }
+
+  .proof-title {
+    margin-top: 0.75rem;
+  }
+
+  .proof-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .proof-cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .proof-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .proof-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+  }
+
+  .proof-stat-badge {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .proof-stat-num {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .proof-stat-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .proof-quote {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .proof-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .author-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+  }
+
+  .author-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .author-role {
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    color: var(--color-text-muted);
+  }
+</style>

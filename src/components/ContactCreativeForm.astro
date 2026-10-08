@@ -1,0 +1,367 @@
+---
+// ContactCreativeForm.astro
+// High-velocity creative project intake form with interactive pill selectors
+---
+
+<div class="creative-form-wrapper" id="creativeFormRoot">
+  <div class="demo-badge-bar">
+    <span class="badge-icon" aria-hidden="true">⚡</span>
+    <span><strong>Interactive Intake Simulator:</strong> Validates inputs and options in real-time without sending data to third-party servers.</span>
+  </div>
+
+  <form class="creative-form" id="creativeForm" novalidate>
+    <!-- Scope selection -->
+    <div class="form-section">
+      <label class="section-label">What creative firepower do you need? <span class="req">*</span></label>
+      <div class="pills-selection-grid" id="servicePillsGroup">
+        <label class="pill-option">
+          <input type="checkbox" name="services" value="3d-motion" checked />
+          <span class="pill-btn">3D Motion & CGI</span>
+        </label>
+        <label class="pill-option">
+          <input type="checkbox" name="services" value="social-reels" />
+          <span class="pill-btn">Viral Social Reels</span>
+        </label>
+        <label class="pill-option">
+          <input type="checkbox" name="services" value="webgl" />
+          <span class="pill-btn">60fps WebGL Flagship</span>
+        </label>
+        <label class="pill-option">
+          <input type="checkbox" name="services" value="strategy" />
+          <span class="pill-btn">Creative Strategy & Hooks</span>
+        </label>
+      </div>
+      <span class="error-msg" id="serviceError">Please select at least one capability.</span>
+    </div>
+
+    <!-- Budget range -->
+    <div class="form-section">
+      <label class="section-label">Estimated Project Budget (USD)</label>
+      <div class="budget-pills-grid">
+        <label class="pill-option">
+          <input type="radio" name="budget" value="10k-25k" />
+          <span class="pill-btn">$10k - $25k</span>
+        </label>
+        <label class="pill-option">
+          <input type="radio" name="budget" value="25k-50k" checked />
+          <span class="pill-btn">$25k - $50k</span>
+        </label>
+        <label class="pill-option">
+          <input type="radio" name="budget" value="50k+" />
+          <span class="pill-btn">$50k+ Enterprise</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Contact fields -->
+    <div class="form-grid-two">
+      <div class="input-block">
+        <label for="cName">Your Name & Company <span class="req">*</span></label>
+        <input type="text" id="cName" name="name" placeholder="e.g. Alex Vance, Head of Growth" required />
+        <span class="error-msg" id="nameError">Please enter your name.</span>
+      </div>
+
+      <div class="input-block">
+        <label for="cEmail">Work Email <span class="req">*</span></label>
+        <input type="email" id="cEmail" name="email" placeholder="alex@brand.com" required />
+        <span class="error-msg" id="emailError">Please enter a valid work email.</span>
+      </div>
+    </div>
+
+    <div class="input-block">
+      <label for="cProject">Project Vision or Links <span class="req">*</span></label>
+      <textarea id="cProject" name="details" rows="3" placeholder="Tell us about your brand, timeline, and what you want to achieve..." required></textarea>
+      <span class="error-msg" id="detailsError">Please share some context about your project.</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary submit-btn" id="submitBtn">
+      <span>Send Creative Brief</span>
+      <span class="btn-arrow-icon">→</span>
+    </button>
+  </form>
+
+  <!-- Success confirmation state -->
+  <div class="form-success-banner" id="formSuccess" hidden>
+    <div class="success-icon">✓</div>
+    <h3 class="success-title">Brief Received!</h3>
+    <p class="success-desc">
+      Our team typically reviews new incoming briefs within 4 hours. We'll be in touch with preliminary angles and slot availability.
+    </p>
+    <button type="button" class="btn btn-secondary btn-reset" id="resetFormBtn">Submit Another Brief</button>
+  </div>
+</div>
+
+<style>
+  .creative-form-wrapper {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 4vw, 3rem);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.25);
+  }
+
+  .demo-badge-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-sm);
+    font-size: 0.775rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .badge-icon {
+    color: var(--color-accent);
+  }
+
+  .creative-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .section-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.85rem;
+  }
+
+  .req {
+    color: var(--color-accent);
+  }
+
+  .pills-selection-grid,
+  .budget-pills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .pill-option {
+    cursor: pointer;
+  }
+
+  .pill-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .pill-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.65rem 1.25rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+  }
+
+  .pill-option:hover .pill-btn {
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+  }
+
+  .pill-option input:checked + .pill-btn {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .form-grid-two {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .form-grid-two {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .input-block label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .input-block input,
+  .input-block textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    padding: 0.85rem 1.15rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .input-block input:focus,
+  .input-block textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-badge-bg);
+  }
+
+  .error-msg {
+    display: none;
+    font-size: 0.75rem;
+    color: #FF4D4D;
+    margin-top: 0.25rem;
+  }
+
+  .error-msg.visible {
+    display: block;
+  }
+
+  .submit-btn {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .submit-btn {
+      width: auto;
+      align-self: flex-start;
+      padding: 1rem 2.5rem;
+    }
+  }
+
+  /* Success Banner */
+  .form-success-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .form-success-banner[hidden] {
+    display: none;
+  }
+
+  .success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: 800;
+  }
+
+  .success-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-text-primary);
+  }
+
+  .success-desc {
+    max-width: 480px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .btn-reset {
+    margin-top: 1rem;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.getElementById('creativeFormRoot');
+    if (!root) return;
+
+    const form = root.querySelector('#creativeForm');
+    const successBanner = root.querySelector('#formSuccess');
+    const resetBtn = root.querySelector('#resetFormBtn');
+
+    if (!form || !successBanner) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let hasError = false;
+
+      // Validate checkboxes
+      const checkedServices = form.querySelectorAll('input[name="services"]:checked');
+      const serviceError = root.querySelector('#serviceError');
+      if (checkedServices.length === 0) {
+        serviceError?.classList.add('visible');
+        hasError = true;
+      } else {
+        serviceError?.classList.remove('visible');
+      }
+
+      // Validate name
+      const nameInput = form.querySelector('#cName');
+      const nameError = root.querySelector('#nameError');
+      if (!nameInput.value.trim()) {
+        nameError?.classList.add('visible');
+        hasError = true;
+      } else {
+        nameError?.classList.remove('visible');
+      }
+
+      // Validate email
+      const emailInput = form.querySelector('#cEmail');
+      const emailError = root.querySelector('#emailError');
+      if (!emailInput.value.includes('@') || !emailInput.value.includes('.')) {
+        emailError?.classList.add('visible');
+        hasError = true;
+      } else {
+        emailError?.classList.remove('visible');
+      }
+
+      // Validate details
+      const detailsInput = form.querySelector('#cProject');
+      const detailsError = root.querySelector('#detailsError');
+      if (!detailsInput.value.trim()) {
+        detailsError?.classList.add('visible');
+        hasError = true;
+      } else {
+        detailsError?.classList.remove('visible');
+      }
+
+      if (!hasError) {
+        form.style.display = 'none';
+        successBanner.hidden = false;
+      }
+    });
+
+    resetBtn?.addEventListener('click', () => {
+      form.reset();
+      form.style.display = 'flex';
+      successBanner.hidden = true;
+    });
+  })();
+</script>

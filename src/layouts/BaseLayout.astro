@@ -1,0 +1,919 @@
+---
+import '../styles/global.css';
+import siteData from '../data/site.json';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
+import CursorFollower from '../components/CursorFollower.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  currentPath?: string;
+}
+
+const {
+  title,
+  description = siteData.seo.description,
+  currentPath = Astro.url.pathname
+} = Astro.props;
+
+const pageTitle = title 
+  ? `${title} — ${siteData.brand.name} Creative Atelier`
+  : siteData.seo.defaultTitle;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="polare-creme">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content={description} />
+  <title>{pageTitle}</title>
+
+  <!-- Pre-render theme hydration script (zero flicker) -->
+  <script is:inline>
+    (() => {
+      const saved = localStorage.getItem('vortice-theme') || 'polare-creme';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <!-- Custom magnetic cursor with dynamic text expansion -->
+  <CursorFollower />
+
+  <!-- 1. TOP ANNOUNCEMENT MARQUEE (MADAME POLARE STYLE) -->
+  <aside class="top-announcement-strip">
+    <div class="announcement-marquee">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          <span>NOW BOOKING Q2/Q3 CREATIVE SPRINTS</span>
+          <span class="m-dot">✦</span>
+          <span>PARIS (18E) & CDMX (ROMA NORTE) HUBS</span>
+          <span class="m-dot">✦</span>
+          <span>WE MAKE CONTENT PEOPLE NEVER SKIP</span>
+          <span class="m-dot">✦</span>
+          <a href="/contact" class="m-link">START A PROJECT →</a>
+          <span class="m-dot">✦</span>
+        </div>
+        <div class="marquee-item" aria-hidden="true">
+          <span>NOW BOOKING Q2/Q3 CREATIVE SPRINTS</span>
+          <span class="m-dot">✦</span>
+          <span>PARIS (18E) & CDMX (ROMA NORTE) HUBS</span>
+          <span class="m-dot">✦</span>
+          <span>WE MAKE CONTENT PEOPLE NEVER SKIP</span>
+          <span class="m-dot">✦</span>
+          <a href="/contact" class="m-link">START A PROJECT →</a>
+          <span class="m-dot">✦</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. FLOATING EDITORIAL HEADER -->
+  <header class="vortice-header" id="siteHeader">
+    <div class="container header-container">
+      <!-- Brand Logo / Wordmark -->
+      <a href="/" class="brand-link" aria-label="Vórtice Creative Atelier Home" data-cursor-text="HOME">
+        <span class="brand-title">VÓRTICE</span>
+        <span class="brand-meta">® ATELIER · 2026</span>
+      </a>
+
+      <!-- Floating Pill Navigation (Madame Polare inspired) -->
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <ul class="nav-pill-group">
+          <li>
+            <a 
+              href="/studio" 
+              class:list={['nav-pill-item', { active: currentPath.startsWith('/studio') }]}
+              data-cursor-text="STUDIO"
+            >
+              Studio
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/services" 
+              class:list={['nav-pill-item', { active: currentPath.startsWith('/services') }]}
+              data-cursor-text="SERVICES"
+            >
+              Services
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/work" 
+              class:list={['nav-pill-item', { active: currentPath.startsWith('/work') }]}
+              data-cursor-text="WORK"
+            >
+              <span>Work</span>
+              <span class="nav-micro-badge">New</span>
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/contact" 
+              class:list={['nav-pill-item', { active: currentPath.startsWith('/contact') }]}
+              data-cursor-text="CONTACT"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="header-actions">
+        <!-- Language Selector -->
+        <div class="lang-toggle-pill" title="Multilingual Switcher">
+          <span class="lang-active">EN</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-inactive">ES</span>
+        </div>
+
+        <!-- High-Contrast CTA Button -->
+        <a href="/contact" class="btn btn-primary header-cta-btn" data-cursor-text="SPRINT">
+          <span>Start Project</span>
+          <span class="btn-arrow-icon">→</span>
+        </a>
+
+        <!-- Mobile Drawer Burger Toggle -->
+        <button 
+          type="button" 
+          class="menu-burger" 
+          id="vorticeMenuToggle" 
+          aria-label="Toggle navigation menu" 
+          aria-expanded="false"
+        >
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="vorticeDrawer" hidden>
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <span class="brand-title">VÓRTICE</span>
+        <span class="brand-meta">® ATELIER</span>
+      </div>
+      <button type="button" class="drawer-close-btn" id="vorticeDrawerClose" aria-label="Close menu">✕</button>
+    </div>
+
+    <nav class="drawer-nav">
+      <ul>
+        <li>
+          <a href="/studio" class="drawer-nav-item">Studio</a>
+        </li>
+        <li>
+          <a href="/services" class="drawer-nav-item">Services</a>
+        </li>
+        <li>
+          <a href="/work" class="drawer-nav-item">
+            <span>Selected Work</span>
+            <span class="nav-micro-badge">New</span>
+          </a>
+        </li>
+        <li>
+          <a href="/contact" class="drawer-nav-item highlight-cta">Start a Project →</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="drawer-footer">
+      <div class="drawer-hubs">
+        <p>Paris · 17 rue André del Sarte, 75018</p>
+        <p>CDMX · Calle Tonalá 142, Roma Norte</p>
+      </div>
+      <a href="mailto:bonjour@vortice.studio" class="drawer-contact-mail">bonjour@vortice.studio</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <!-- 3. MONUMENTAL EDITORIAL FOOTER (MADAME POLARE STYLE) -->
+  <footer class="vortice-footer">
+    <div class="container footer-monumental-header">
+      <!-- Huge Typography Signature -->
+      <div class="monumental-brand-wrap">
+        <span class="monumental-brand-text">VÓRTICE</span>
+      </div>
+    </div>
+
+    <div class="container footer-content-grid">
+      <!-- Hub 1: Studio Philosophy & Local Times -->
+      <div class="footer-col col-identity">
+        <p class="footer-statement">
+          We craft bold, emotionally resonant motion and brand identities across disciplines. Beauty shapes every message.
+        </p>
+        
+        <div class="studio-clocks-box">
+          <div class="clock-item">
+            <span class="clock-label">PARIS 18E</span>
+            <span class="clock-val" id="clockParis">18:30 CET</span>
+            <span class="clock-dot"></span>
+          </div>
+          <div class="clock-item">
+            <span class="clock-label">CDMX ROMA</span>
+            <span class="clock-val" id="clockCdmx">10:30 CST</span>
+            <span class="clock-dot"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hub 2: Atelier Locations -->
+      <div class="footer-col">
+        <h4 class="footer-heading">// ATELIERS</h4>
+        <div class="footer-address-block">
+          <p class="hub-city">Paris Studio</p>
+          <p class="hub-address">17 rue André del Sarte</p>
+          <p class="hub-district">75018 Paris, France</p>
+        </div>
+        <div class="footer-address-block">
+          <p class="hub-city">Mexico City Studio</p>
+          <p class="hub-address">Calle Tonalá 142</p>
+          <p class="hub-district">Roma Norte, 06700 CDMX</p>
+        </div>
+      </div>
+
+      <!-- Hub 3: Navigation & Disciplines -->
+      <div class="footer-col">
+        <h4 class="footer-heading">// EXPLORE</h4>
+        <ul class="footer-nav-list">
+          <li><a href="/studio" class="draw-line-link">The Studio & Manifesto</a></li>
+          <li><a href="/services" class="draw-line-link">Services & Capabilities</a></li>
+          <li><a href="/work" class="draw-line-link">Selected Work (2024-2026)</a></li>
+          <li><a href="/contact" class="draw-line-link">Book a 5-Day Sprint</a></li>
+        </ul>
+      </div>
+
+      <!-- Hub 4: Direct Inquiry & Newsletter -->
+      <div class="footer-col col-contact">
+        <h4 class="footer-heading">// DIRECT INQUIRY</h4>
+        <a href="mailto:bonjour@vortice.studio" class="footer-mail-link" data-cursor-text="EMAIL">
+          <span>bonjour@vortice.studio</span>
+          <span class="mail-arrow">↗</span>
+        </a>
+        <p class="footer-mail-note">Usually replied within 24 hours.</p>
+
+        <div class="footer-social-cluster">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-pill-link">Instagram ↗</a>
+          <a href="https://vimeo.com" target="_blank" rel="noopener" class="social-pill-link">Vimeo ↗</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-pill-link">LinkedIn ↗</a>
+          <a href="https://awwwards.com" target="_blank" rel="noopener" class="social-pill-link">Awwwards ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Strip -->
+    <div class="container footer-bottom-strip">
+      <div class="bottom-left">
+        <p>© {new Date().getFullYear()} Vórtice Creative Atelier. All rights reserved.</p>
+        <p class="lumux-credit">Bespoke showcase crafted by <a href="https://lumuxstudio.com/es" target="_blank" rel="noopener">Lumux Studio</a>.</p>
+      </div>
+
+      <div class="bottom-right">
+        <span class="badge-accolade">✦ AWWWARDS SOTD NOMINEE</span>
+        <button type="button" class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" data-cursor-text="TOP ↑">
+          <span>Back to Top</span>
+          <span class="top-arrow">↑</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Theme Switcher Widget -->
+  <ThemeSwitcher />
+</body>
+</html>
+
+<style>
+  /* 1. TOP ANNOUNCEMENT MARQUEE */
+  .top-announcement-strip {
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+    padding: 0.45rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    user-select: none;
+  }
+
+  .announcement-marquee {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: announcementScroll 30s linear infinite;
+  }
+
+  .announcement-marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes announcementScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-right: 1.5rem;
+    white-space: nowrap;
+    color: var(--color-text-primary);
+  }
+
+  .m-dot {
+    color: var(--color-accent);
+  }
+
+  .m-link {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 700;
+  }
+
+  /* 2. HEADER */
+  .vortice-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(14px);
+    transition: var(--transition-theme);
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 76px;
+    gap: 1.5rem;
+  }
+
+  .brand-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .brand-title {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+
+  .brand-meta {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+    margin-top: 3px;
+  }
+
+  /* Floating Pill Navigation */
+  .desktop-nav {
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    .desktop-nav {
+      display: block;
+    }
+  }
+
+  .nav-pill-group {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    list-style: none;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: 0.35rem 0.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .nav-pill-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1.15rem;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .nav-pill-item:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .nav-pill-item.active {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-primary);
+  }
+
+  .nav-micro-badge {
+    padding: 0.15rem 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+
+  .nav-pill-item.active .nav-micro-badge {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+  }
+
+  /* Actions */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .lang-toggle-pill {
+    display: none;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.85rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  @media (min-width: 640px) {
+    .lang-toggle-pill {
+      display: inline-flex;
+    }
+  }
+
+  .lang-active {
+    color: var(--color-text-primary);
+  }
+
+  .lang-divider {
+    color: var(--color-border);
+  }
+
+  .lang-inactive {
+    color: var(--color-text-muted);
+  }
+
+  .header-cta-btn {
+    display: none;
+    padding: 0.65rem 1.35rem;
+    font-size: 0.875rem;
+  }
+
+  @media (min-width: 720px) {
+    .header-cta-btn {
+      display: inline-flex;
+    }
+  }
+
+  .menu-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    padding: 0.65rem;
+  }
+
+  @media (min-width: 900px) {
+    .menu-burger {
+      display: none;
+    }
+  }
+
+  .burger-bar {
+    width: 20px;
+    height: 2px;
+    background-color: var(--color-text-primary);
+    transition: transform 0.2s ease;
+  }
+
+  /* Mobile Drawer */
+  .mobile-drawer {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-bg-primary);
+    z-index: 999;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .mobile-drawer[hidden] {
+    display: none;
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .drawer-close-btn {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    cursor: pointer;
+  }
+
+  .drawer-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .drawer-nav-item {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .drawer-nav-item.highlight-cta {
+    color: var(--color-accent);
+  }
+
+  .drawer-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  .drawer-contact-mail {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  /* 3. FOOTER */
+  .vortice-footer {
+    background-color: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    padding: clamp(4rem, 7vw, 6.5rem) 0 2.5rem;
+    transition: var(--transition-theme);
+  }
+
+  .footer-monumental-header {
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 2rem;
+    overflow: hidden;
+  }
+
+  .monumental-brand-wrap {
+    width: 100%;
+    text-align: center;
+  }
+
+  .monumental-brand-text {
+    font-family: var(--font-display);
+    font-size: clamp(3.75rem, 12vw, 10.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    color: var(--color-text-primary);
+    display: block;
+    user-select: none;
+    opacity: 0.95;
+  }
+
+  .footer-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  @media (min-width: 640px) {
+    .footer-content-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .footer-content-grid {
+      grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+      gap: 3.5rem;
+    }
+  }
+
+  .footer-statement {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    margin-bottom: 2rem;
+    max-width: 360px;
+  }
+
+  .studio-clocks-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .clock-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-full);
+    width: fit-content;
+  }
+
+  .clock-label {
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .clock-val {
+    color: var(--color-text-secondary);
+  }
+
+  .clock-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    box-shadow: 0 0 6px var(--color-accent);
+    animation: pulseDot 2s infinite;
+  }
+
+  .footer-heading {
+    font-family: var(--font-mono);
+    font-size: 0.785rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-address-block {
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .hub-city {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.2rem;
+  }
+
+  .hub-address,
+  .hub-district {
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+
+  .footer-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    font-size: 0.925rem;
+  }
+
+  .footer-mail-link {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-mail-link:hover {
+    color: var(--color-accent);
+  }
+
+  .mail-arrow {
+    color: var(--color-accent);
+    transition: transform 0.2s ease;
+  }
+
+  .footer-mail-link:hover .mail-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  .footer-mail-note {
+    font-size: 0.825rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-social-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .social-pill-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    transition: all var(--transition-fast);
+  }
+
+  .social-pill-link:hover {
+    background-color: var(--color-hover-dark-bg);
+    color: var(--color-hover-dark-text);
+    border-color: var(--color-hover-dark-bg);
+    transform: translateY(-2px);
+  }
+
+  /* Footer Bottom Strip */
+  .footer-bottom-strip {
+    border-top: 1px solid var(--color-border-light);
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    font-size: 0.825rem;
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom-strip {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .lumux-credit a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .bottom-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .badge-accolade {
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  .back-to-top-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-bg-card);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: 0.45rem 1rem;
+    font-size: 0.825rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .back-to-top-btn:hover {
+    background-color: var(--color-hover-dark-bg);
+    color: var(--color-hover-dark-text);
+    transform: translateY(-2px);
+  }
+</style>
+
+<!-- Mobile drawer & Back to top script -->
+<script is:inline>
+  (() => {
+    // Drawer
+    const toggle = document.getElementById('vorticeMenuToggle');
+    const drawer = document.getElementById('vorticeDrawer');
+    const close = document.getElementById('vorticeDrawerClose');
+
+    if (toggle && drawer) {
+      toggle.addEventListener('click', () => {
+        drawer.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+
+      close?.addEventListener('click', () => {
+        drawer.hidden = true;
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Back to top
+    const topBtn = document.getElementById('backToTopBtn');
+    topBtn?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Live studio clocks
+    function updateClocks() {
+      const now = new Date();
+      const parisClock = document.getElementById('clockParis');
+      const cdmxClock = document.getElementById('clockCdmx');
+
+      if (parisClock) {
+        parisClock.textContent = now.toLocaleTimeString('en-US', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit', hour12: false }) + ' CET';
+      }
+      if (cdmxClock) {
+        cdmxClock.textContent = now.toLocaleTimeString('en-US', { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', hour12: false }) + ' CST';
+      }
+    }
+    updateClocks();
+    setInterval(updateClocks, 30000);
+  })();
+</script>
+
+<!-- GSAP ScrollTrigger Animations with Reduced Motion Fallback -->
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReduced) {
+      const reveals = document.querySelectorAll('.feature-card-item, .proof-card, .stack-card-item');
+      reveals.forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          },
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          clearProps: 'all'
+        });
+      });
+    }
+  }
+</script>

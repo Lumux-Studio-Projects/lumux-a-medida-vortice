@@ -1,0 +1,39 @@
+{
+  "title": "Aurora Audio",
+  "client": "Aurora Acoustics Ficticia",
+  "category": "Identidad & Digital",
+  "year": 2024,
+  "brief": "Desarrollar un sistema de marca y plataforma web inmersiva para una firma de equipos de sonido espacial y acústica computacional.",
+  "concept": "Visualizamos el sonido como ondas cinéticas de presión que esculpen el espacio. Empleamos tipografía monoespaciada de alta precisión combinada con gradientes oscuros y geometrías dinámicas.",
+  "deliverables": [
+    "Identidad de marca y manual de normas visuales",
+    "Dirección de arte para renders 3D de producto",
+    "Diseño UI/UX para sitio web de catálogo acústico",
+    "Sistema de iconografía técnica vectorial"
+  ],
+  "heroImage": "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=1600&q=80",
+  "gallery": [
+    {
+      "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Detalle de amplificador y controles rotatorios",
+      "span": "half"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Auriculares acústicos con iluminación de estudio",
+      "span": "half"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1600&q=80",
+      "alt": "Composición de marca y cartelería editorial",
+      "span": "full"
+    }
+  ],
+  "colorPalette": ["#0B0C0E", "#D4FF00", "#F5F6F8", "#1E2026"],
+  "credits": {
+    "artDirection": "Vórtice Creative Bureau",
+    "design": "Equipo de Diseño Gráfico Ficticio",
+    "development": "Equipo Frontend Ficticio"
+  },
+  "featured": true
+}

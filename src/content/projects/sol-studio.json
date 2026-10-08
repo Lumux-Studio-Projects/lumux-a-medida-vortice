@@ -1,0 +1,34 @@
+{
+  "title": "Sol Studio",
+  "client": "Sol Fashion Label Ficticia",
+  "category": "Identidad & Dirección de Arte",
+  "year": 2024,
+  "brief": "Desarrollar la dirección de arte y universo gráfico para una marca de indumentaria textil confeccionada éticamente a partir de fibras recicladas.",
+  "concept": "La sencillez de la luz solar como elemento rector. Una paleta austera con contrastes solares y maquetación inspirada en publicaciones de arte contemporáneo de gran escala.",
+  "deliverables": [
+    "Logotipo, tipografía a medida e identidad visual",
+    "Dirección creativa del lookbook de temporada",
+    "Diseño de etiquetas y packaging biodegradable",
+    "Experiencia web interactiva para pre-orders"
+  ],
+  "heroImage": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1600&q=80",
+  "gallery": [
+    {
+      "src": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Retrato de modelo con prendas de algodón orgánico",
+      "span": "half"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Detalle de textura y costura vista",
+      "span": "half"
+    }
+  ],
+  "colorPalette": ["#111111", "#E6C280", "#F7F7F7", "#222222"],
+  "credits": {
+    "artDirection": "Vórtice Creative Bureau",
+    "design": "Equipo de Marca Ficticio",
+    "development": "Equipo Frontend Ficticio"
+  },
+  "featured": false
+}

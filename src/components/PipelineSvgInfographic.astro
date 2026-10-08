@@ -1,0 +1,357 @@
+---
+// PipelineSvgInfographic.astro
+// Parametric animated SVG infographic illustrating the high-speed creative production engine
+---
+
+<div class="pipeline-container" id="pipelineRoot">
+  <div class="pipeline-toolbar">
+    <div class="toolbar-meta">
+      <span class="toolbar-badge">ENGINE // PIPELINE</span>
+      <span class="toolbar-scale">THE VÓRTICE CREATIVE FORGE · 5-DAY TURNAROUND SPRINT</span>
+    </div>
+    <div class="toolbar-nodes">
+      <button type="button" class="node-tab active" data-stage="01">01 Hook Discovery</button>
+      <button type="button" class="node-tab" data-stage="02">02 3D Layout</button>
+      <button type="button" class="node-tab" data-stage="03">03 WebGL Shaders</button>
+      <button type="button" class="node-tab" data-stage="04">04 Global Deploy</button>
+    </div>
+  </div>
+
+  <div class="pipeline-canvas-wrap">
+    <svg 
+      class="pipeline-svg" 
+      viewBox="0 0 1100 480" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Vórtice Creative Production Engine Pipeline Diagram"
+    >
+      <defs>
+        <!-- Gradients -->
+        <linearGradient id="pipeFlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--color-accent)" stop-opacity="0.8" />
+          <stop offset="50%" stop-color="var(--color-accent-secondary, #8CC9FA)" stop-opacity="1" />
+          <stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0.9" />
+        </linearGradient>
+
+        <pattern id="matrixGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-opacity="0.04" stroke-width="0.75"/>
+          <circle cx="20" cy="20" r="0.7" fill="currentColor" fill-opacity="0.1" />
+        </pattern>
+      </defs>
+
+      <rect width="1100" height="480" fill="var(--color-bg-card)" />
+      <rect width="1100" height="480" fill="url(#matrixGrid)" />
+
+      <!-- Main Data Flow Highway -->
+      <path 
+        d="M 120 240 C 260 240, 260 160, 400 160 C 540 160, 540 320, 680 320 C 820 320, 820 240, 960 240" 
+        stroke="url(#pipeFlowGrad)" 
+        stroke-width="3" 
+        stroke-dasharray="8 6" 
+        class="animated-flow-line"
+      />
+
+      <path 
+        d="M 120 240 C 260 240, 260 160, 400 160 C 540 160, 540 320, 680 320 C 820 320, 820 240, 960 240" 
+        stroke="var(--color-accent)" 
+        stroke-width="1" 
+        stroke-opacity="0.3" 
+        fill="none"
+      />
+
+      <!-- NODE 01: Concept & Hook Extraction -->
+      <g class="pipeline-node node-01 active" data-node="01" transform="translate(140, 240)">
+        <circle cx="0" cy="0" r="38" fill="var(--color-bg-secondary)" stroke="var(--color-accent)" stroke-width="2" />
+        <circle cx="0" cy="0" r="48" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-opacity="0.3" class="pulse-aura" />
+        <text x="0" y="-5" fill="var(--color-accent)" font-family="var(--font-mono)" font-size="12" font-weight="800" text-anchor="middle">01</text>
+        <text x="0" y="14" fill="var(--color-text-primary)" font-family="var(--font-mono)" font-size="9" font-weight="700" text-anchor="middle">HOOK DISCOVERY</text>
+      </g>
+
+      <!-- NODE 02: 3D Layout & Style Frames -->
+      <g class="pipeline-node node-02" data-node="02" transform="translate(400, 160)">
+        <circle cx="0" cy="0" r="38" fill="var(--color-bg-secondary)" stroke="var(--color-accent-secondary, #8CC9FA)" stroke-width="2" />
+        <circle cx="0" cy="0" r="48" fill="none" stroke="var(--color-accent-secondary, #8CC9FA)" stroke-width="1" stroke-opacity="0.3" class="pulse-aura" />
+        <text x="0" y="-5" fill="var(--color-accent-secondary, #8CC9FA)" font-family="var(--font-mono)" font-size="12" font-weight="800" text-anchor="middle">02</text>
+        <text x="0" y="14" fill="var(--color-text-primary)" font-family="var(--font-mono)" font-size="9" font-weight="700" text-anchor="middle">3D LAYOUT</text>
+      </g>
+
+      <!-- NODE 03: WebGL & Kinetic Sim -->
+      <g class="pipeline-node node-03" data-node="03" transform="translate(680, 320)">
+        <circle cx="0" cy="0" r="38" fill="var(--color-bg-secondary)" stroke="var(--color-accent-tertiary, #FF1F71)" stroke-width="2" />
+        <circle cx="0" cy="0" r="48" fill="none" stroke="var(--color-accent-tertiary, #FF1F71)" stroke-width="1" stroke-opacity="0.3" class="pulse-aura" />
+        <text x="0" y="-5" fill="var(--color-accent-tertiary, #FF1F71)" font-family="var(--font-mono)" font-size="12" font-weight="800" text-anchor="middle">03</text>
+        <text x="0" y="14" fill="var(--color-text-primary)" font-family="var(--font-mono)" font-size="9" font-weight="700" text-anchor="middle">WEBGL SHADERS</text>
+      </g>
+
+      <!-- NODE 04: Global Deployment -->
+      <g class="pipeline-node node-04" data-node="04" transform="translate(940, 240)">
+        <circle cx="0" cy="0" r="38" fill="var(--color-bg-secondary)" stroke="var(--color-accent)" stroke-width="2" />
+        <circle cx="0" cy="0" r="48" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-opacity="0.3" class="pulse-aura" />
+        <text x="0" y="-5" fill="var(--color-accent)" font-family="var(--font-mono)" font-size="12" font-weight="800" text-anchor="middle">04</text>
+        <text x="0" y="14" fill="var(--color-text-primary)" font-family="var(--font-mono)" font-size="9" font-weight="700" text-anchor="middle">60FPS DEPLOY</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Legend cards -->
+  <div class="pipeline-cards-grid">
+    <div class="pipeline-card active" data-card="01">
+      <div class="p-num">01</div>
+      <div>
+        <h4 class="p-title">Hook Discovery & Scripting</h4>
+        <p class="p-desc">Deconstructing consumer attention drop-offs to architect 12+ creative angles with high statistical conversion probabilities.</p>
+      </div>
+    </div>
+
+    <div class="pipeline-card" data-card="02">
+      <div class="p-num">02</div>
+      <div>
+        <h4 class="p-title">3D Layout & Style Frames</h4>
+        <p class="p-desc">Rapid modeling in Blender & Cinema 4D. Client reviews style frames within 48 hours for rapid alignment before heavy rendering.</p>
+      </div>
+    </div>
+
+    <div class="pipeline-card" data-card="03">
+      <div class="p-num">03</div>
+      <div>
+        <h4 class="p-title">WebGL & Kinetic Simulation</h4>
+        <p class="p-desc">Cloth physics, fluid dynamics, and custom Three.js shaders engineered for seamless 60fps GPU execution on mobile.</p>
+      </div>
+    </div>
+
+    <div class="pipeline-card" data-card="04">
+      <div class="p-num">04</div>
+      <div>
+        <h4 class="p-title">Multi-Platform Global Deploy</h4>
+        <p class="p-desc">Simultaneous packaging of vertical 9:16 reels, 4K YouTube cinematic cuts, and interactive web runtime with zero latency.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .pipeline-container {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.25);
+  }
+
+  .pipeline-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.75rem;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .toolbar-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-badge {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-xs);
+    letter-spacing: 0.08em;
+  }
+
+  .toolbar-scale {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+
+  .toolbar-nodes {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .node-tab {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .node-tab:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+  }
+
+  .node-tab.active {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    border-color: var(--color-text-primary);
+  }
+
+  .pipeline-canvas-wrap {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .pipeline-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1100 / 480;
+  }
+
+  .animated-flow-line {
+    animation: flowPulse 2.5s linear infinite;
+  }
+
+  .pulse-aura {
+    animation: ringAura 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    transform-origin: center;
+    pointer-events: none;
+  }
+
+  @keyframes flowPulse {
+    from { stroke-dashoffset: 28; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes ringAura {
+    0% { r: 38; opacity: 0.8; }
+    100% { r: 56; opacity: 0; }
+  }
+
+  .pipeline-node {
+    cursor: pointer;
+  }
+
+  .pipeline-node text {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .pipeline-node circle:first-of-type {
+    transition: stroke-width 0.22s ease, filter 0.22s ease, fill 0.22s ease;
+  }
+
+  .pipeline-node:hover circle:first-of-type,
+  .pipeline-node.active circle:first-of-type {
+    stroke-width: 3.5;
+    fill: var(--color-bg-card);
+    filter: drop-shadow(0 0 10px var(--color-accent));
+  }
+
+  .pipeline-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-bg-secondary);
+  }
+
+  @media (min-width: 640px) {
+    .pipeline-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .pipeline-cards-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .pipeline-card {
+    padding: 1.75rem;
+    border-bottom: 1px solid var(--color-border-light);
+    border-right: 1px solid var(--color-border-light);
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .pipeline-card:hover,
+  .pipeline-card.active {
+    background-color: var(--color-bg-card);
+  }
+
+  .pipeline-card.active {
+    border-top: 2px solid var(--color-accent);
+  }
+
+  .p-num {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--color-accent);
+  }
+
+  .p-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .p-desc {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.getElementById('pipelineRoot');
+    if (!root) return;
+
+    const tabs = root.querySelectorAll('.node-tab');
+    const cards = root.querySelectorAll('.pipeline-card');
+    const nodes = root.querySelectorAll('.pipeline-node');
+
+    function setActive(stage) {
+      tabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-stage') === stage));
+      cards.forEach(c => c.classList.toggle('active', c.getAttribute('data-card') === stage));
+      nodes.forEach(n => n.classList.toggle('active', n.getAttribute('data-node') === stage));
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const stage = tab.getAttribute('data-stage');
+        if (stage) setActive(stage);
+      });
+    });
+
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        const stage = card.getAttribute('data-card');
+        if (stage) setActive(stage);
+      });
+    });
+
+    nodes.forEach(node => {
+      node.addEventListener('mouseenter', () => {
+        const stage = node.getAttribute('data-node');
+        if (stage) setActive(stage);
+      });
+      node.addEventListener('click', () => {
+        const stage = node.getAttribute('data-node');
+        if (stage) setActive(stage);
+      });
+    });
+  })();
+</script>

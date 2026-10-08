@@ -1,0 +1,75 @@
+{
+  "name": "VÓRTICE // CREATIVE ATELIER",
+  "defaultTheme": "polare-creme",
+  "themes": [
+    {
+      "id": "polare-creme",
+      "name": "Madame Polare Crème",
+      "subtitle": "Warm Paris ecru, pristine gallery white & cobalt blue",
+      "mode": "light",
+      "colors": {
+        "bgPrimary": "#F5F4EF",
+        "bgSecondary": "#ECE8DF",
+        "bgCard": "#FFFFFF",
+        "textPrimary": "#111113",
+        "textSecondary": "#4E4E57",
+        "textMuted": "#7E7E89",
+        "accent": "#0038FF",
+        "accentHover": "#002BD6",
+        "accentText": "#FFFFFF",
+        "accentSecondary": "#FF5500",
+        "border": "#D8D4C8",
+        "borderLight": "#EAE7DF",
+        "surfaceMuted": "#E5E1D7",
+        "badgeBg": "rgba(0, 56, 255, 0.08)",
+        "badgeBorder": "rgba(0, 56, 255, 0.25)"
+      }
+    },
+    {
+      "id": "atelier-lumiere",
+      "name": "Atelier Lumière",
+      "subtitle": "Architectural daylight chalk, pure linen & warm coral",
+      "mode": "light",
+      "colors": {
+        "bgPrimary": "#FAFAF8",
+        "bgSecondary": "#EFEFEB",
+        "bgCard": "#FFFFFF",
+        "textPrimary": "#0E0F12",
+        "textSecondary": "#474A54",
+        "textMuted": "#7C808E",
+        "accent": "#E85D3F",
+        "accentHover": "#D14A2D",
+        "accentText": "#FFFFFF",
+        "accentSecondary": "#1E4D40",
+        "border": "#DEDDD7",
+        "borderLight": "#EDEDE8",
+        "surfaceMuted": "#E6E5DF",
+        "badgeBg": "rgba(232, 93, 63, 0.08)",
+        "badgeBorder": "rgba(232, 93, 63, 0.25)"
+      }
+    },
+    {
+      "id": "nocturne-noir",
+      "name": "Nocturne Velvet Noir",
+      "subtitle": "Velvet matte black, satin graphite & buttercup gold",
+      "mode": "dark",
+      "colors": {
+        "bgPrimary": "#0C0D10",
+        "bgSecondary": "#15161C",
+        "bgCard": "#1C1E26",
+        "textPrimary": "#F8F8FA",
+        "textSecondary": "#A6ABB9",
+        "textMuted": "#6B7080",
+        "accent": "#FFF04D",
+        "accentHover": "#EEDB3C",
+        "accentText": "#0C0D10",
+        "accentSecondary": "#FF4071",
+        "border": "#282B36",
+        "borderLight": "#363A48",
+        "surfaceMuted": "#131419",
+        "badgeBg": "rgba(255, 240, 77, 0.12)",
+        "badgeBorder": "rgba(255, 240, 77, 0.35)"
+      }
+    }
+  ]
+}

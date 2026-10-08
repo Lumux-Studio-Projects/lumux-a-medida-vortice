@@ -1,0 +1,242 @@
+---
+---
+
+<div class="three-scene-wrapper" id="threeSceneContainer">
+  <!-- Fondo y gradiente estático de respaldo -->
+  <div class="scene-fallback-glow" aria-hidden="true"></div>
+
+  <!-- Canvas WebGL interactivo -->
+  <canvas id="webglCanvas" class="three-canvas" aria-hidden="true"></canvas>
+
+  <!-- Control accesible para pausar/reanudar movimiento -->
+  <button 
+    type="button" 
+    class="motion-control-btn" 
+    id="toggleMotionBtn" 
+    aria-label="Pausar rotación de la escultura 3D"
+    title="Pausar/Reanudar rotación 3D"
+  >
+    <span class="motion-icon" id="motionIcon" aria-hidden="true">⏸</span>
+    <span class="motion-text">3D Interactivo</span>
+  </button>
+</div>
+
+<style>
+  .three-scene-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-width: 580px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+  }
+
+  .scene-fallback-glow {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-accent) 0%, transparent 65%);
+    opacity: 0.12;
+    filter: blur(40px);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .three-canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    cursor: grab;
+  }
+
+  .three-canvas:active {
+    cursor: grabbing;
+  }
+
+  .motion-control-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(14, 16, 20, 0.75);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(8px);
+    color: var(--color-text-primary);
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .motion-control-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .motion-icon {
+    font-size: 0.65rem;
+  }
+</style>
+
+<script>
+  import * as THREE from 'three';
+
+  const container = document.getElementById('threeSceneContainer');
+  const canvas = document.getElementById('webglCanvas') as HTMLCanvasElement | null;
+  const toggleBtn = document.getElementById('toggleMotionBtn');
+  const motionIcon = document.getElementById('motionIcon');
+
+  if (container && canvas) {
+    let animationFrameId: number;
+    let isPlaying = true;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      isPlaying = false;
+      if (motionIcon) motionIcon.textContent = '▶';
+    }
+
+    // Inicializar Escena, Cámara y Renderer
+    const width = container.clientWidth || 500;
+    const height = container.clientHeight || 500;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    camera.position.z = 5.2;
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Geometría paramétrica abstracta: Escultura cinética Vórtice
+    const geometry = new THREE.IcosahedronGeometry(2, 2);
+    
+    // Obtener color de acento del CSS
+    function getAccentColor() {
+      const hex = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim() || '#D4FF00';
+      return new THREE.Color(hex);
+    }
+
+    const materialWire = new THREE.MeshBasicMaterial({
+      color: getAccentColor(),
+      wireframe: true,
+      transparent: true,
+      opacity: 0.75
+    });
+
+    const innerGeo = new THREE.TorusKnotGeometry(1, 0.28, 64, 16);
+    const innerMat = new THREE.MeshBasicMaterial({
+      color: 0x444455,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.25
+    });
+
+    const meshGroup = new THREE.Group();
+    const outerMesh = new THREE.Mesh(geometry, materialWire);
+    const innerMesh = new THREE.Mesh(innerGeo, innerMat);
+
+    meshGroup.add(outerMesh);
+    meshGroup.add(innerMesh);
+    scene.add(meshGroup);
+
+    // Interacción con ratón / puntero
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    container.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouseY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+    });
+
+    container.addEventListener('mouseleave', () => {
+      mouseX = 0;
+      mouseY = 0;
+    });
+
+    // Observer para pausar renderizado cuando no está en pantalla
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          if (isPlaying) {
+            cancelAnimationFrame(animationFrameId);
+          }
+        } else {
+          if (isPlaying) {
+            renderLoop();
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    observer.observe(container);
+
+    // Botón de control accesible
+    toggleBtn?.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      if (motionIcon) motionIcon.textContent = isPlaying ? '⏸' : '▶';
+      if (isPlaying) {
+        renderLoop();
+      } else {
+        cancelAnimationFrame(animationFrameId);
+      }
+    });
+
+    // Actualizar color si cambia el tema
+    const themeObserver = new MutationObserver(() => {
+      materialWire.color = getAccentColor();
+    });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    // Loop de renderizado
+    function renderLoop() {
+      if (!isPlaying) return;
+
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+
+      meshGroup.rotation.x += 0.003;
+      meshGroup.rotation.y += 0.005;
+
+      meshGroup.rotation.y += targetX * 0.02;
+      meshGroup.rotation.x += -targetY * 0.02;
+
+      renderer.render(scene, camera);
+      animationFrameId = requestAnimationFrame(renderLoop);
+    }
+
+    renderLoop();
+
+    // Redimensionamiento responsive
+    const handleResize = () => {
+      if (!container) return;
+      const newW = container.clientWidth;
+      const newH = container.clientHeight;
+      camera.aspect = newW / newH;
+      camera.updateProjectionMatrix();
+      renderer.setSize(newW, newH);
+    };
+
+    window.addEventListener('resize', handleResize);
+  }
+</script>

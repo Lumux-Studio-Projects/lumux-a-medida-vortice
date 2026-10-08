@@ -1,0 +1,1665 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoReelSlider from '../components/VideoReelSlider.astro';
+import StackingCasesSection from '../components/StackingCasesSection.astro';
+import MoneyMakersSection from '../components/MoneyMakersSection.astro';
+import PipelineSvgInfographic from '../components/PipelineSvgInfographic.astro';
+import SocialProofSection from '../components/SocialProofSection.astro';
+import ContactCreativeForm from '../components/ContactCreativeForm.astro';
+import RotatingSealSvg from '../components/RotatingSealSvg.astro';
+import OrganicWaveSvg from '../components/OrganicWaveSvg.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+---
+
+<BaseLayout title="Motion & Creative Atelier">
+  <!-- 1. HERO SECTION: EDITORIAL INLINE-MEDIA TYPOGRAPHY (MADAME POLARE STYLE) -->
+  <section class="section-hero" id="hero">
+    <div class="container hero-container">
+      
+      <!-- Top Studio Status Tag -->
+      <div class="hero-top-status">
+        <span class="status-live-dot"></span>
+        <span class="status-label">CREATIVE & MOTION ATELIER · PARIS (18E) & CDMX (ROMA NORTE)</span>
+        <span class="status-badge">Q2/Q3 OPEN</span>
+      </div>
+
+      <!-- Monumental Headline with Inline Media Elements -->
+      <div class="hero-editorial-headline-wrap">
+        <h1 class="hero-editorial-h1">
+          <!-- Row 1 -->
+          <span class="hero-line">
+            <span class="word-text">WE SHAPE</span>
+            <span class="inline-hero-pill-img" title="Editorial Art Direction" data-cursor-text="EXPAND">
+              <img 
+                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=500&q=80" 
+                alt="High-fashion motion styling"
+                loading="eager"
+              />
+            </span>
+            <span class="word-text">STORIES</span>
+          </span>
+
+          <!-- Row 2 -->
+          <span class="hero-line">
+            <span class="word-text">INTO</span>
+            <!-- Avatar Cluster Stack -->
+            <span class="inline-hero-avatars" title="Creative Directors & Motion Artists">
+              <span class="avatar-stack-wrapper">
+                <span class="avatar-pill">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80" alt="Camille V. Creative Director" />
+                </span>
+                <span class="avatar-pill">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80" alt="Mateo S. 3D Lead" />
+                </span>
+                <span class="avatar-pill">
+                  <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=160&q=80" alt="Alix M. Motion Designer" />
+                </span>
+              </span>
+              <span class="avatar-badge-count">+12</span>
+            </span>
+            <span class="word-text heading-alt">UNMISSABLE</span>
+          </span>
+
+          <!-- Row 3 -->
+          <span class="hero-line">
+            <span class="word-text">MOTION</span>
+            <span class="word-text">PEOPLE</span>
+            <span class="word-text">NEVER</span>
+            <span class="word-text heading-accent">SKIP.</span>
+            <!-- Inline Action Icon -->
+            <a href="#showreel-section" class="inline-hero-action-icon" aria-label="Explore Showreel" data-cursor-text="WATCH ▶">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </span>
+        </h1>
+      </div>
+
+      <!-- Bottom Scroll Cue to discover atelier below -->
+      <div class="hero-bottom-cue">
+        <a href="#studio-ethos" class="hero-scroll-cue-link" data-cursor-text="DISCOVER ↓">
+          <span class="cue-pill-dot"></span>
+          <span class="cue-text">Scroll to explore</span>
+          <span class="cue-arrow">↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. STUDIO ETHOS & ATELIER METRICS STATEMENT (REVEALED ON SCROLL) -->
+  <section class="hero-statement-section" id="studio-ethos">
+    <div class="container">
+      <div class="hero-statement-grid">
+        <div class="statement-left">
+          <div class="statement-tag-pill">
+            <span class="tag-dot"></span>
+            <span>STUDIO ETHOS</span>
+          </div>
+          <p class="statement-lead">
+            Vórtice is an independent creative atelier collaborating with ambitious brands worldwide. We blend cinema-grade 3D art direction, high-velocity social reels, and bespoke digital craftsmanship to transform everyday attention into lasting cultural impact.
+          </p>
+          <div class="hero-actions-row">
+            <a href="/contact" class="btn btn-primary" data-cursor-text="LET'S TALK">
+              <span>Book a 5-Day Sprint</span>
+              <span class="btn-arrow-icon">→</span>
+            </a>
+            <a href="#showreel-section" class="btn btn-secondary" data-cursor-text="PLAY SHOWREEL">
+              <span>Watch Showreel</span>
+              <span class="btn-arrow-icon">▶</span>
+            </a>
+            <a href="#recent-work" class="btn btn-outline" data-cursor-text="PORTFOLIO">
+              <span>Selected Work ↓</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="statement-right">
+          <!-- Rotating Studio Seal SVG -->
+          <div class="hero-seal-box">
+            <RotatingSealSvg size={110} />
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="hero-metrics-cluster">
+            <div class="metric-pill-item">
+              <span class="m-val">+85%</span>
+              <span class="m-txt">Hook Rate Surge</span>
+            </div>
+            <div class="metric-pill-item">
+              <span class="m-val">3.8x</span>
+              <span class="m-txt">Blended Ad ROAS</span>
+            </div>
+            <div class="metric-pill-item">
+              <span class="m-val">5 Days</span>
+              <span class="m-txt">Turnaround Sprint</span>
+            </div>
+            <div class="metric-pill-item">
+              <span class="m-val">48+</span>
+              <span class="m-txt">Global Launches</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Organic Wave SVG Transition -->
+    <OrganicWaveSvg height={45} class="hero-bottom-wave" />
+  </section>
+
+  <!-- 2. INFINITE VIDEO & MOTION REEL SLIDER (9:16 VERTICAL SOCIAL) -->
+  <section class="slider-section" id="reels-slider">
+    <div class="container text-center section-title-compact">
+      <span class="tag-pill">
+        <span class="tag-dot"></span>
+        <span>VERTICAL REEL VAULT (9:16)</span>
+      </span>
+      <h2 class="sub-headline">Motion people watch. Performance teams love.</h2>
+      <p class="sub-desc">Scroll-stopping mobile video assets engineered for Meta Reels, TikTok Ads, and YouTube Shorts.</p>
+    </div>
+
+    <VideoReelSlider />
+  </section>
+
+  <!-- 3. BRAND LOGOS & ATELIER TICKER -->
+  <section class="ticker-banner-section" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-group">
+        <span>CINEMA-GRADE 3D</span>
+        <span class="t-sep">✦</span>
+        <span>HIGH-VELOCITY CREATIVE</span>
+        <span class="t-sep">✦</span>
+        <span>NO SLOW AGENCY BUREAUCRACY</span>
+        <span class="t-sep">✦</span>
+        <span>5-DAY SPRINT CADENCE</span>
+        <span class="t-sep">✦</span>
+        <span>CONTENT THAT CONVERTS</span>
+        <span class="t-sep">✦</span>
+        <span>PARIS · MEXICO CITY</span>
+        <span class="t-sep">✦</span>
+      </div>
+      <div class="ticker-group" aria-hidden="true">
+        <span>CINEMA-GRADE 3D</span>
+        <span class="t-sep">✦</span>
+        <span>HIGH-VELOCITY CREATIVE</span>
+        <span class="t-sep">✦</span>
+        <span>NO SLOW AGENCY BUREAUCRACY</span>
+        <span class="t-sep">✦</span>
+        <span>5-DAY SPRINT CADENCE</span>
+        <span class="t-sep">✦</span>
+        <span>CONTENT THAT CONVERTS</span>
+        <span class="t-sep">✦</span>
+        <span>PARIS · MEXICO CITY</span>
+        <span class="t-sep">✦</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. STATEMENT MANIFESTO: WHAT WE DESTROY VS WHAT WE FORGE -->
+  <section class="manifesto-section" id="manifesto">
+    <div class="container-narrow text-center">
+      <span class="tag-pill">
+        <span class="tag-dot"></span>
+        <span>OUR CORE ETHOS</span>
+      </span>
+      <blockquote class="manifesto-quote">
+        “We don’t believe in 40-slide theoretical decks. While traditional agencies are still scheduling their fifth alignment call, we’re already sculpting 3D style frames and testing viral hooks.”
+      </blockquote>
+      <div class="manifesto-author">
+        <span class="author-title">VÓRTICE // CREATIVE ATELIER</span>
+        <span class="author-sub">Engineered for Brands That Can't Afford to Be Ignored</span>
+      </div>
+
+      <div class="manifesto-split-cards">
+        <div class="split-card card-destroy">
+          <span class="split-label">// WHAT WE DESTROY</span>
+          <ul class="split-list">
+            <li>✕ 40-slide theoretical slide decks gathering dust</li>
+            <li>✕ Generic stock photos and lifeless templates</li>
+            <li>✕ Slow 3-week revision cycles that kill momentum</li>
+            <li>✕ Clunky animations that crash on mobile devices</li>
+          </ul>
+        </div>
+        <div class="split-card card-build">
+          <span class="split-label">// WHAT WE FORGE</span>
+          <ul class="split-list">
+            <li>✓ Thumb-stopping 3D sensory visual spectacles</li>
+            <li>✓ High-converting short-form video reels & ads</li>
+            <li>✓ 5-day rapid production sprint turnaround</li>
+            <li>✓ Flawless responsive design with clean bespoke code</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 3D PERSPECTIVE STACKING CARDS (RECENT WORK) -->
+  <StackingCasesSection />
+
+  <!-- 6. "STUFF THAT ACTUALLY MAKES YOU MONEY" (CAPABILITIES GRID) -->
+  <MoneyMakersSection />
+
+  <!-- 7. ANIMATED SVG CREATIVE ENGINE INFOGRAPHIC -->
+  <section class="pipeline-section" id="pipeline">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="tag-pill">
+          <span class="tag-dot"></span>
+          <span>PRODUCTION ARCHITECTURE</span>
+        </span>
+        <h2 class="sub-headline">The 5-Day Creative Forge Pipeline</h2>
+        <p class="sub-desc">
+          How we translate raw product briefs into viral, high-converting assets in under 120 hours.
+        </p>
+      </div>
+
+      <PipelineSvgInfographic />
+    </div>
+  </section>
+
+  <!-- 8. SHOWREEL & VISUAL PROTOTYPING MASONRY -->
+  <section class="showreel-masonry-section" id="showreel-section">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="tag-pill">
+          <span class="tag-dot"></span>
+          <span>VISUAL LAB</span>
+        </span>
+        <h2 class="sub-headline">Motion & Visual Prototyping</h2>
+        <p class="sub-desc">A curated glimpse inside our active rendering farm, lighting studies, and sensory design tests.</p>
+      </div>
+
+      <div class="masonry-grid">
+        <div class="masonry-card" data-cursor-text="WATCH 4K ▶">
+          <div class="masonry-img-wrap">
+            <img 
+              src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80" 
+              alt="Spatial Soundwave Mechanics"
+              class="masonry-img" 
+              loading="lazy"
+            />
+            <div class="masonry-overlay"></div>
+            <span class="masonry-play">▶</span>
+          </div>
+          <div class="masonry-meta">
+            <h4 class="masonry-title">Aether Spatial Soundwave Mechanics</h4>
+            <span class="masonry-tag">4K REDSHIFT · 60 FPS</span>
+          </div>
+        </div>
+
+        <div class="masonry-card" data-cursor-text="EXPLORE 3D">
+          <div class="masonry-img-wrap">
+            <img 
+              src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=900&q=80" 
+              alt="Hyper Mobility Telemetry Dashboard"
+              class="masonry-img" 
+              loading="lazy"
+            />
+            <div class="masonry-overlay"></div>
+            <span class="masonry-play">▶</span>
+          </div>
+          <div class="masonry-meta">
+            <h4 class="masonry-title">Hyper Mobility Telemetry Dashboard</h4>
+            <span class="masonry-tag">THREE.JS · BESPOKE GL</span>
+          </div>
+        </div>
+
+        <div class="masonry-card" data-cursor-text="VIEW REEL">
+          <div class="masonry-img-wrap">
+            <img 
+              src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=900&q=80" 
+              alt="Kroma Botanicals Kinetic Packaging"
+              class="masonry-img" 
+              loading="lazy"
+            />
+            <div class="masonry-overlay"></div>
+            <span class="masonry-play">▶</span>
+          </div>
+          <div class="masonry-meta">
+            <h4 class="masonry-title">Kroma Organic Gin Kinetic Unboxing</h4>
+            <span class="masonry-tag">OCTANE RENDER · FOLEY AUDIO</span>
+          </div>
+        </div>
+
+        <div class="masonry-card" data-cursor-text="WATCH 4K ▶">
+          <div class="masonry-img-wrap">
+            <img 
+              src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80" 
+              alt="Nova Haute Horlogerie Kinetic Sim"
+              class="masonry-img" 
+              loading="lazy"
+            />
+            <div class="masonry-overlay"></div>
+            <span class="masonry-play">▶</span>
+          </div>
+          <div class="masonry-meta">
+            <h4 class="masonry-title">Nova Haute Horlogerie Kinetic Sim</h4>
+            <span class="masonry-tag">HOUDINI FX · CINEMA 4D</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. ATELIER MOODBOARD & CRAFT GALLERY (LIVING STUDIO ATMOSPHERE) -->
+  <section class="atelier-moodboard-section">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="tag-pill">
+          <span class="tag-dot"></span>
+          <span>HUMAN CRAFT & ATMOSPHERE</span>
+        </span>
+        <h2 class="sub-headline">Where Art Direction Meets Modern Culture</h2>
+        <p class="sub-desc">Our studios in Paris 18e and Mexico City Roma Norte operate as open laboratories for form, typography, and motion.</p>
+      </div>
+
+      <div class="moodboard-grid">
+        <div class="moodboard-card span-photo-1">
+          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Creative director at work in Paris atelier" class="mood-img" />
+          <div class="mood-caption">
+            <span>PARIS ATELIER // 3D LIGHTING DESK</span>
+          </div>
+        </div>
+        <div class="moodboard-card span-photo-2">
+          <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Typography and material samples" class="mood-img" />
+          <div class="mood-caption">
+            <span>PRINT & MOTION EXPERIMENTS</span>
+          </div>
+        </div>
+        <div class="moodboard-card span-photo-3">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Design system tokens board" class="mood-img" />
+          <div class="mood-caption">
+            <span>CDMX HUB // DESIGN ARCHITECTURE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. SOCIAL PROOF & VERIFIED RESULTS WALL -->
+  <SocialProofSection />
+
+  <!-- 11. THE 5-DAY SPRINT MODEL: CADENCE -->
+  <section class="sprint-model-section" id="sprints">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="tag-pill">
+          <span class="tag-dot"></span>
+          <span>SPEED WITH RIGOR</span>
+        </span>
+        <h2 class="sub-headline">From Brief to 4K Master in 5 Days</h2>
+        <p class="sub-desc">Our battle-tested schedule for venture-backed brands, agencies, and performance teams.</p>
+      </div>
+
+      <div class="sprint-steps-grid">
+        <div class="sprint-step-box">
+          <span class="sprint-day">DAY 01</span>
+          <h4 class="sprint-title">Audit & Hook Sprint</h4>
+          <p class="sprint-desc">Audience psychology teardown, competitor analysis, and 12 written concept angles ready for your sign-off.</p>
+        </div>
+
+        <div class="sprint-step-box">
+          <span class="sprint-day">DAY 02</span>
+          <h4 class="sprint-title">Style Frames & 3D Layout</h4>
+          <p class="sprint-desc">Photorealistic lighting boards, geometry sculpting, and typography layouts delivered in Figma and Frame.io.</p>
+        </div>
+
+        <div class="sprint-step-box">
+          <span class="sprint-day">DAY 03</span>
+          <h4 class="sprint-title">Motion Sim & Dynamics</h4>
+          <p class="sprint-desc">Simulating dynamic camera moves, cloth dynamics, custom shaders, and interactive sound design.</p>
+        </div>
+
+        <div class="sprint-step-box">
+          <span class="sprint-day">DAY 04-05</span>
+          <h4 class="sprint-title">Rapid Polish & 4K Export</h4>
+          <p class="sprint-desc">One focused revision cycle, multi-format delivery (9:16, 16:9, 1:1), and web-optimized asset handoff.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. FAQ ACCORDION -->
+  <section class="faq-section" id="faq">
+    <div class="container-narrow">
+      <div class="text-center section-title-compact">
+        <span class="tag-pill">
+          <span class="tag-dot"></span>
+          <span>TRANSPARENCY</span>
+        </span>
+        <h2 class="sub-headline">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-accordion-list" id="faqAccordionList">
+        <details class="faq-item" name="faq-exclusive" open>
+          <summary class="faq-summary">
+            <span>Do we own the 3D source files and raw assets?</span>
+            <span class="faq-chevron">↓</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes, 100%. Upon completion and final milestone release, all 3D Blender/C4D source files, textures, sound designs, and WebGL code repositories are fully transferred to your brand with zero ongoing royalties.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" name="faq-exclusive">
+          <summary class="faq-summary">
+            <span>How fast can you begin our creative sprint?</span>
+            <span class="faq-chevron">↓</span>
+          </summary>
+          <div class="faq-answer">
+            <p>We typically onboard a maximum of 3 clients per sprint cycle to ensure senior-level creative direction. When capacity is open, we can initiate discovery within 48 hours of brief confirmation.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" name="faq-exclusive">
+          <summary class="faq-summary">
+            <span>Can you work directly with our media buyers and growth teams?</span>
+            <span class="faq-chevron">↓</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Absolutely. We integrate directly into Slack or Teams, coordinate naming conventions for Meta Ads Manager and TikTok Creative Center, and export multiple hook variations for multivariate testing.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" name="faq-exclusive">
+          <summary class="faq-summary">
+            <span>Does interactive motion slow down our website's loading speed?</span>
+            <span class="faq-chevron">↓</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Never. We engineer all assets with modern compression, lazy hydration, and strict performance budgets. Our builds routinely score 95+ on Google Lighthouse Mobile.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" name="faq-exclusive">
+          <summary class="faq-summary">
+            <span>What formats and aspect ratios are included in the 5-day sprint?</span>
+            <span class="faq-chevron">↓</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Every sprint asset is mastered in 4K ProRes and exported across all standard aspect ratios: 9:16 vertical (Reels/TikTok/Shorts), 16:9 widescreen (Web/YouTube), and 1:1 square (Feeds/LinkedIn), with web-optimized WebM/MP4 versions ready for immediate deployment.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" name="faq-exclusive">
+          <summary class="faq-summary">
+            <span>How does billing and milestones work?</span>
+            <span class="faq-chevron">↓</span>
+          </summary>
+          <div class="faq-answer">
+            <p>We operate on simple, transparent fixed-scope agreements: 50% upon kickoff, 50% upon final delivery of all approved 4K exports and source files. Zero unexpected hourly overages.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. HIGH-CONVERTING INTAKE & BRIEF SECTION -->
+  <section class="intake-section" id="contact-intake">
+    <div class="container">
+      <div class="intake-header text-center">
+        <span class="tag-pill">
+          <span class="tag-dot"></span>
+          <span>START A PROJECT</span>
+        </span>
+        <h2 class="sub-headline">Ready to shape unmissable creative?</h2>
+        <p class="sub-desc">
+          Fill out this brief intake or schedule a direct creative review call with our directors in Paris and CDMX.
+        </p>
+      </div>
+
+      <div class="intake-layout-split">
+        <div class="intake-form-side">
+          <ContactCreativeForm />
+        </div>
+
+        <div class="intake-contact-side">
+          <div class="direct-booking-card">
+            <span class="card-mini-tag">// DIRECT LINE</span>
+            <h4 class="booking-title">Book a 20-Min Creative Call</h4>
+            <p class="booking-text">Prefer to talk through your brand challenges live? Book an intro session with our creative directors in Paris or Mexico City.</p>
+            <a href="mailto:bonjour@vortice.studio" class="btn btn-secondary btn-full" data-cursor-text="EMAIL DIRECT">
+              bonjour@vortice.studio
+            </a>
+          </div>
+
+          <div class="studio-hubs-box">
+            <h4 class="hubs-title">Studio Hubs</h4>
+            <div class="hub-location">
+              <strong>Paris Atelier</strong>
+              <span>17 rue André del Sarte, 75018 Paris, France</span>
+            </div>
+            <div class="hub-location">
+              <strong>Mexico City Studio</strong>
+              <span>Calle Tonalá 142, Roma Norte, 06700 CDMX</span>
+            </div>
+            <div class="hub-location">
+              <strong>Commission Status</strong>
+              <span class="status-live-text">● Sprint Slots Open for Q2/Q3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* 1. HERO: MADAME POLARE STYLE (MONUMENTAL FULL-VIEWPORT HEADLINE) */
+  .section-hero {
+    min-height: calc(100svh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(1.5rem, 3vh, 2.5rem) 0 clamp(1.25rem, 2vh, 2rem);
+    background-color: var(--color-bg-primary);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-theme);
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto 0;
+  }
+
+  .hero-top-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.35rem 1rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: clamp(1.25rem, 3vh, 2.5rem);
+    box-shadow: var(--shadow-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .status-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent);
+    animation: pulseDot 1.8s infinite;
+  }
+
+  .status-label {
+    color: var(--color-text-primary);
+    letter-spacing: 0.04em;
+  }
+
+  .status-badge {
+    color: var(--color-accent);
+    background-color: var(--color-bg-secondary);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-full);
+    font-size: 0.68rem;
+  }
+
+  /* Monumental Headline Wrap (Expansive, Fills Full Viewport Frame) */
+  .hero-editorial-headline-wrap {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-editorial-h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.35rem, 1.2vw, 0.9rem);
+    font-size: clamp(2.5rem, 5.8vw, 5.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+  }
+
+  .hero-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(0.45rem, 1.2vw, 1rem);
+    row-gap: 0.35rem;
+  }
+
+  .word-text {
+    color: var(--color-text-primary);
+    display: inline-block;
+  }
+
+  .heading-accent {
+    color: var(--color-accent);
+  }
+
+  /* Inline hero media adjustments */
+  :global(.inline-hero-pill-img) {
+    width: clamp(96px, 11vw, 160px) !important;
+    height: clamp(44px, 5.2vw, 70px) !important;
+    margin: 0 0.45rem !important;
+    border-radius: var(--radius-full) !important;
+    overflow: hidden !important;
+    display: inline-flex !important;
+    vertical-align: middle !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  :global(.inline-hero-pill-img img) {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  :global(.inline-hero-avatars) {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin: 0 0.45rem !important;
+    vertical-align: middle !important;
+  }
+
+  :global(.avatar-stack-wrapper) {
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  :global(.avatar-pill) {
+    width: clamp(38px, 4.4vw, 52px) !important;
+    height: clamp(38px, 4.4vw, 52px) !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    border: 2px solid var(--color-bg-primary) !important;
+    margin-left: -12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  :global(.avatar-pill:first-child) {
+    margin-left: 0 !important;
+  }
+
+  :global(.avatar-pill img) {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  :global(.avatar-badge-count) {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: clamp(32px, 3.8vw, 44px) !important;
+    padding: 0 0.65rem !important;
+    border-radius: var(--radius-full) !important;
+    background-color: var(--color-bg-card) !important;
+    border: 1px solid var(--color-border) !important;
+    color: var(--color-text-secondary) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    margin-left: 0.45rem !important;
+  }
+
+  :global(.inline-hero-action-icon) {
+    width: clamp(44px, 5vw, 62px) !important;
+    height: clamp(44px, 5vw, 62px) !important;
+    border-radius: 50% !important;
+    background-color: var(--color-text-primary) !important;
+    color: var(--color-bg-primary) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: 0.6rem !important;
+    vertical-align: middle !important;
+    transition: transform 0.25s ease, background-color 0.2s ease !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  :global(.inline-hero-action-icon:hover) {
+    transform: rotate(45deg) scale(1.1) !important;
+    background-color: var(--color-accent) !important;
+    color: var(--color-accent-text) !important;
+  }
+
+  :global(.inline-hero-action-icon svg) {
+    width: 48% !important;
+    height: 48% !important;
+  }
+
+  /* Bottom Cue: Scroll Prompt */
+  .hero-bottom-cue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1.5rem;
+  }
+
+  .hero-scroll-cue-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.45rem 1rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+  }
+
+  .hero-scroll-cue-link:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: translateY(2px);
+  }
+
+  .cue-pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .cue-arrow {
+    display: inline-block;
+    animation: bounceDown 2s infinite ease-in-out;
+  }
+
+  @keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  /* 2. STUDIO ETHOS & ATELIER METRICS SECTION (REVEALED ON SCROLL) */
+  .hero-statement-section {
+    padding: clamp(4.5rem, 7vw, 7.5rem) 0 0;
+    background-color: var(--color-bg-primary);
+    position: relative;
+    border-top: 1px solid var(--color-border);
+    transition: var(--transition-theme);
+  }
+
+  .hero-statement-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    width: 100%;
+    margin-bottom: clamp(3.5rem, 6vw, 5.5rem);
+  }
+
+  @media (min-width: 960px) {
+    .hero-statement-grid {
+      grid-template-columns: 1.35fr 1fr;
+      align-items: center;
+      gap: 4.5rem;
+    }
+  }
+
+  .statement-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.25rem;
+  }
+
+  .statement-lead {
+    font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+    line-height: 1.55;
+    color: var(--color-text-primary);
+    font-weight: 500;
+    margin-bottom: 1.75rem;
+    max-width: 680px;
+  }
+
+  .hero-actions-row {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-actions-row .btn {
+    padding: 0.75rem 1.6rem;
+    font-size: 0.9rem;
+  }
+
+  .statement-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 960px) {
+    .statement-right {
+      justify-content: flex-end;
+    }
+  }
+
+  .hero-seal-box {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .hero-metrics-cluster {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .metric-pill-item {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.95rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .metric-pill-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-text-primary);
+  }
+
+  .m-val {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1.1;
+  }
+
+  .m-txt {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-top: 0.1rem;
+  }
+
+  .hero-bottom-wave {
+    margin-top: 0.5rem;
+    max-height: 45px;
+  }
+
+  /* 2. REELS SLIDER */
+  .slider-section {
+    padding: clamp(4rem, 7vw, 6.5rem) 0 2rem;
+    background-color: var(--color-bg-primary);
+  }
+
+  .section-title-compact {
+    max-width: 720px;
+    margin: 0 auto 3rem;
+  }
+
+  .sub-headline {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    margin-top: 0.85rem;
+    line-height: 1.15;
+  }
+
+  .sub-desc {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-top: 0.65rem;
+  }
+
+  /* 3. TICKER */
+  .ticker-banner-section {
+    background-color: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.15rem 0;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: mainTicker 32s linear infinite;
+  }
+
+  .ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+    padding-right: 2.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+  }
+
+  .t-sep {
+    color: var(--color-accent);
+  }
+
+  @keyframes mainTicker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* 4. MANIFESTO */
+  .manifesto-section {
+    padding: clamp(5rem, 8vw, 8rem) 0;
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .manifesto-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    line-height: 1.28;
+    color: var(--color-text-primary);
+    margin: 2rem 0 2rem;
+  }
+
+  .manifesto-author {
+    margin-bottom: 3.5rem;
+  }
+
+  .author-title {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .author-sub {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .manifesto-split-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: left;
+  }
+
+  @media (min-width: 768px) {
+    .manifesto-split-cards {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  .split-card {
+    padding: 2.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-destroy {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .card-build {
+    background-color: var(--color-bg-card);
+    border-color: var(--color-accent);
+  }
+
+  .split-label {
+    font-family: var(--font-mono);
+    font-size: 0.775rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-destroy .split-label { color: #E85D3F; }
+  .card-build .split-label { color: var(--color-accent); }
+
+  .split-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+
+  .card-build .split-list li {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  /* 7. PIPELINE */
+  .pipeline-section {
+    padding: clamp(5rem, 8vw, 8rem) 0;
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section-title-wrap {
+    margin-bottom: 3.5rem;
+  }
+
+  /* 8. SHOWREEL MASONRY (BALANCED & SYMMETRICAL 2x2 SHOWCASE) */
+  .showreel-masonry-section {
+    padding: clamp(4.5rem, 7vw, 7rem) 0;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .masonry-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .masonry-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.25rem;
+    }
+  }
+
+  .masonry-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .masonry-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .masonry-img-wrap {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--color-bg-secondary);
+  }
+
+  .masonry-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .masonry-card:hover .masonry-img {
+    transform: scale(1.05);
+  }
+
+  .masonry-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(12, 13, 16, 0.65) 100%);
+  }
+
+  .masonry-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease;
+  }
+
+  .masonry-card:hover .masonry-play {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  .masonry-meta {
+    padding: 1.35rem 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .masonry-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .masonry-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  /* 9. ATELIER MOODBOARD & CRAFT */
+  .atelier-moodboard-section {
+    padding: clamp(5rem, 8vw, 8rem) 0;
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .moodboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .moodboard-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .moodboard-card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .mood-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .moodboard-card:hover .mood-img {
+    transform: scale(1.05);
+  }
+
+  .mood-caption {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    padding: 0.5rem 0.85rem;
+    background-color: rgba(12, 13, 16, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.05em;
+  }
+
+  /* 11. SPRINT MODEL */
+  .sprint-model-section {
+    padding: clamp(5rem, 8vw, 8rem) 0;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .sprint-steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .sprint-steps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sprint-steps-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .sprint-step-box {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2.25rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .sprint-step-box:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-text-primary);
+  }
+
+  .sprint-day {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 800;
+    color: var(--color-accent);
+  }
+
+  .sprint-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .sprint-desc {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+  }
+
+  /* 12. FAQ */
+  .faq-section {
+    padding: clamp(5rem, 8vw, 8rem) 0;
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq-accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .faq-item {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .faq-summary {
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+
+  .faq-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-chevron {
+    color: var(--color-accent);
+    font-size: 1.25rem;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 2rem 1.75rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  /* 13. INTAKE */
+  .intake-section {
+    padding: clamp(5rem, 8vw, 8rem) 0;
+    background-color: var(--color-bg-secondary);
+  }
+
+  .intake-header {
+    max-width: 780px;
+    margin: 0 auto clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .intake-layout-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  @media (min-width: 960px) {
+    .intake-layout-split {
+      grid-template-columns: 1.35fr 1fr;
+      gap: 4.5rem;
+    }
+  }
+
+  .intake-contact-side {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .direct-booking-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-mini-tag {
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .booking-title {
+    font-size: 1.35rem;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .booking-text {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  .studio-hubs-box {
+    background-color: var(--color-bg-card);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .hubs-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--color-text-primary);
+  }
+
+  .hub-location {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.875rem;
+  }
+
+  .hub-location strong {
+    color: var(--color-text-primary);
+  }
+
+  .hub-location span {
+    color: var(--color-text-secondary);
+  }
+
+  .status-live-text {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-family: var(--font-mono);
+  }
+
+  .btn-full {
+    width: 100%;
+    text-align: center;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Check user preference for motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    // 1. Hero Entrance Timeline (Plays smoothly on initial page load)
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    heroTl
+      .from('.hero-top-status', {
+        y: -18,
+        opacity: 0,
+        duration: 0.7,
+        delay: 0.15
+      })
+      .from('.hero-editorial-h1 .hero-line', {
+        y: 35,
+        opacity: 0,
+        stagger: 0.14,
+        duration: 0.85
+      }, '-=0.4')
+      .from('.inline-hero-pill-img, .inline-hero-avatars, .inline-hero-action-icon', {
+        scale: 0.75,
+        opacity: 0,
+        stagger: 0.09,
+        duration: 0.75,
+        ease: 'back.out(1.7)'
+      }, '-=0.6')
+      .from('.hero-bottom-cue', {
+        y: 15,
+        opacity: 0,
+        duration: 0.65
+      }, '-=0.35');
+
+    // 2. Studio Ethos & Metrics Section Reveal on Scroll
+    if (document.querySelector('.hero-statement-section')) {
+      gsap.from('.hero-statement-section .statement-left, .hero-statement-section .statement-right', {
+        scrollTrigger: {
+          trigger: '.hero-statement-section',
+          start: 'top 82%',
+          toggleActions: 'play none none none'
+        },
+        y: 40,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.85,
+        ease: 'power3.out'
+      });
+    }
+
+    // 3. Section Headings & Titles Reveal on Scroll
+    const sectionHeaders = document.querySelectorAll('.sub-headline, .manifesto-quote');
+    sectionHeaders.forEach((header) => {
+      gsap.from(header, {
+        scrollTrigger: {
+          trigger: header,
+          start: 'top 88%',
+          toggleActions: 'play none none none'
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out'
+      });
+    });
+
+    // 4. Manifesto Cards Stagger
+    if (document.querySelector('.manifesto-split-cards')) {
+      gsap.from('.manifesto-split-cards .split-card', {
+        scrollTrigger: {
+          trigger: '.manifesto-split-cards',
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        y: 40,
+        opacity: 0,
+        stagger: 0.16,
+        duration: 0.85,
+        ease: 'power3.out'
+      });
+    }
+
+    // 5. Pipeline Engine Infographic Entrance
+    if (document.querySelector('.pipeline-container')) {
+      gsap.from('.pipeline-container', {
+        scrollTrigger: {
+          trigger: '.pipeline-container',
+          start: 'top 82%',
+          toggleActions: 'play none none none'
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power2.out'
+      });
+    }
+
+    // 6. Showreel & Visual Prototyping Cards (Section 8 - 4 Symmetrical Cards)
+    if (document.querySelector('.masonry-grid')) {
+      gsap.from('.masonry-card', {
+        scrollTrigger: {
+          trigger: '.masonry-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        y: 40,
+        opacity: 0,
+        stagger: 0.14,
+        duration: 0.85,
+        ease: 'power3.out'
+      });
+    }
+
+    // 7. Atelier Living Moodboard Cards (Section 9)
+    if (document.querySelector('.moodboard-grid')) {
+      gsap.from('.moodboard-card', {
+        scrollTrigger: {
+          trigger: '.moodboard-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        y: 35,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: 'power2.out'
+      });
+    }
+
+    // 8. 5-Day Sprint Cadence Steps (Section 11)
+    if (document.querySelector('.sprint-steps-grid')) {
+      gsap.from('.sprint-step-box', {
+        scrollTrigger: {
+          trigger: '.sprint-steps-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        y: 35,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.75,
+        ease: 'power2.out'
+      });
+    }
+
+    // 9. FAQ Accordion Items (Section 12)
+    if (document.querySelector('.faq-accordion-list')) {
+      gsap.from('.faq-item', {
+        scrollTrigger: {
+          trigger: '.faq-accordion-list',
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        y: 20,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.65,
+        ease: 'power2.out'
+      });
+    }
+
+    // 10. Brief Intake & Studio Contact Form (Section 13)
+    if (document.querySelector('.intake-layout-split')) {
+      gsap.from('.intake-layout-split > div', {
+        scrollTrigger: {
+          trigger: '.intake-layout-split',
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        y: 35,
+        opacity: 0,
+        stagger: 0.18,
+        duration: 0.85,
+        ease: 'power3.out'
+      });
+    }
+  }
+
+  // 10. Exclusive Accordion Behavior: Close sibling details when one is opened
+  const faqList = document.querySelectorAll<HTMLDetailsElement>('.faq-accordion-list .faq-item');
+  faqList.forEach((detail) => {
+    detail.addEventListener('toggle', () => {
+      if (detail.open) {
+        faqList.forEach((other) => {
+          if (other !== detail && other.open) {
+            other.open = false;
+          }
+        });
+      }
+    });
+  });
+</script>

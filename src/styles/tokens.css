@@ -1,0 +1,119 @@
+/* Design Tokens for VÓRTICE // CREATIVE ATELIER (Madame Polare inspired editorial design) */
+
+:root,
+[data-theme="polare-creme"],
+[data-theme="feed-espresso"],
+[data-theme="extrafazant-chalk"] {
+  /* THEME 1 (Light - Default): Madame Polare Crème / Ecru Paris */
+  --color-bg-primary: #F5F4EF;
+  --color-bg-secondary: #ECE8DF;
+  --color-bg-card: #FFFFFF;
+  --color-text-primary: #111113;
+  --color-text-secondary: #4E4E57;
+  --color-text-muted: #7E7E89;
+  --color-accent: #0038FF;
+  --color-accent-hover: #002BD6;
+  --color-accent-text: #FFFFFF;
+  --color-accent-secondary: #FF5500;
+  --color-accent-tertiary: #10B981;
+  --color-border: #D8D4C8;
+  --color-border-light: #EAE7DF;
+  --color-surface-muted: #E5E1D7;
+  --color-badge-bg: rgba(0, 56, 255, 0.08);
+  --color-badge-border: rgba(0, 56, 255, 0.25);
+  
+  /* Explicit High-Contrast Hover Variables */
+  --color-hover-dark-bg: #111113;
+  --color-hover-dark-text: #FFFFFF;
+  --color-hover-light-bg: #FFFFFF;
+  --color-hover-light-text: #111113;
+  --color-card-border-hover: #111113;
+  --theme-name: "Madame Polare Crème";
+}
+
+[data-theme="atelier-lumiere"] {
+  /* THEME 2 (Light): Atelier Lumière / Pure Nordic Daylight */
+  --color-bg-primary: #FAFAF8;
+  --color-bg-secondary: #EFEFEB;
+  --color-bg-card: #FFFFFF;
+  --color-text-primary: #0E0F12;
+  --color-text-secondary: #474A54;
+  --color-text-muted: #7C808E;
+  --color-accent: #E85D3F;
+  --color-accent-hover: #D14A2D;
+  --color-accent-text: #FFFFFF;
+  --color-accent-secondary: #1E4D40;
+  --color-accent-tertiary: #2563EB;
+  --color-border: #DEDDD7;
+  --color-border-light: #EDEDE8;
+  --color-surface-muted: #E6E5DF;
+  --color-badge-bg: rgba(232, 93, 63, 0.08);
+  --color-badge-border: rgba(232, 93, 63, 0.25);
+
+  /* Explicit High-Contrast Hover Variables */
+  --color-hover-dark-bg: #0E0F12;
+  --color-hover-dark-text: #FFFFFF;
+  --color-hover-light-bg: #FFFFFF;
+  --color-hover-light-text: #0E0F12;
+  --color-card-border-hover: #0E0F12;
+  --theme-name: "Atelier Lumière";
+}
+
+[data-theme="nocturne-noir"],
+[data-theme="cyber-acid"] {
+  /* THEME 3 (Black / Dark): Nocturne Velvet Noir */
+  --color-bg-primary: #0C0D10;
+  --color-bg-secondary: #15161C;
+  --color-bg-card: #1C1E26;
+  --color-text-primary: #F8F8FA;
+  --color-text-secondary: #A6ABB9;
+  --color-text-muted: #6B7080;
+  --color-accent: #FFF04D;
+  --color-accent-hover: #EEDB3C;
+  --color-accent-text: #0C0D10;
+  --color-accent-secondary: #FF4071;
+  --color-accent-tertiary: #4EBEFF;
+  --color-border: #282B36;
+  --color-border-light: #363A48;
+  --color-surface-muted: #131419;
+  --color-badge-bg: rgba(255, 240, 77, 0.12);
+  --color-badge-border: rgba(255, 240, 77, 0.35);
+
+  /* Explicit High-Contrast Hover Variables */
+  --color-hover-dark-bg: #F8F8FA;
+  --color-hover-dark-text: #0C0D10;
+  --color-hover-light-bg: #282B36;
+  --color-hover-light-text: #F8F8FA;
+  --color-card-border-hover: #FFF04D;
+  --theme-name: "Nocturne Velvet Noir";
+}
+
+:root {
+  /* Typography */
+  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Grotesk', ui-monospace, Menlo, monospace;
+
+  /* Dimensions */
+  --container-max: 1440px;
+  --container-narrow: 1120px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-theme: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+
+  /* Border Radii (refined Madame Polare style) */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 9999px;
+  --radius-full: 9999px;
+
+  /* Custom shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.12);
+}

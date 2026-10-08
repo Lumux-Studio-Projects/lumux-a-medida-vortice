@@ -1,0 +1,403 @@
+---
+// VideoReelSlider.astro
+// Full-bleed horizontal motion reels slider with performance metrics inspired by FeedForge
+---
+
+<div class="reel-slider-wrapper" id="reelSliderWrapper">
+  <div class="reel-slider-track" id="reelSliderTrack">
+    <!-- Main set of high-converting 9:16 reels -->
+    <div class="reel-slider-group">
+      <!-- Reel 1: Aether Audio -->
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img 
+            src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80" 
+            alt="Aether Audio 3D Motion Reel"
+            class="reel-img" 
+            loading="lazy"
+          />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">SPATIAL 3D</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Aether Spatial Audio</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">+84% Avg. Watch Time</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reel 2: Hyper Mobility -->
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img 
+            src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80" 
+            alt="Hyper Mobility WebGL Flagship Reel"
+            class="reel-img" 
+            loading="lazy"
+          />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">60FPS WEBGL</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Hyper Mobility Core</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">+140K Social Shares</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reel 3: Kroma Botanicals -->
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img 
+            src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=800&q=80" 
+            alt="Kroma Botanicals Kinetic Packaging Reel"
+            class="reel-img" 
+            loading="lazy"
+          />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">KINETIC PACK</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Kroma Botanicals</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">3.8x Blended ROAS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reel 4: Sol Cyberstudio -->
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img 
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" 
+            alt="Sol Cyberstudio Motion Editorial"
+            class="reel-img" 
+            loading="lazy"
+          />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">VIRAL REEL</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Sol Cyberstudio</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">1.2M Organic Views</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reel 5: Neo Spark -->
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img 
+            src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" 
+            alt="Neo Spark Creative Strategy"
+            class="reel-img" 
+            loading="lazy"
+          />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">HOOK SPRINT</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Neo Spark Hardware</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">+62% Click-Through Rate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reel 6: Pulse Kinetics -->
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img 
+            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" 
+            alt="Pulse Kinetics CGI Simulation"
+            class="reel-img" 
+            loading="lazy"
+          />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">CGI PHYSICS</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Pulse Kinetic Engine</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">1,000+ Assets Shipped</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Duplicate clone for infinite seamless marquee -->
+    <div class="reel-slider-group" aria-hidden="true">
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80" alt="" class="reel-img" loading="lazy" />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">SPATIAL 3D</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Aether Spatial Audio</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">+84% Avg. Watch Time</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80" alt="" class="reel-img" loading="lazy" />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">60FPS WEBGL</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Hyper Mobility Core</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">+140K Social Shares</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=800&q=80" alt="" class="reel-img" loading="lazy" />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">KINETIC PACK</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Kroma Botanicals</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">3.8x Blended ROAS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="" class="reel-img" loading="lazy" />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">VIRAL REEL</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Sol Cyberstudio</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">1.2M Organic Views</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="" class="reel-img" loading="lazy" />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">HOOK SPRINT</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Neo Spark Hardware</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">+62% Click-Through Rate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-card" data-cursor-text="PLAY REEL ▶">
+        <div class="reel-media-wrap">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="" class="reel-img" loading="lazy" />
+          <div class="reel-glow-overlay"></div>
+          <span class="reel-play-btn">▶</span>
+          <span class="reel-tag-badge">CGI PHYSICS</span>
+        </div>
+        <div class="reel-info">
+          <div class="reel-title">Pulse Kinetic Engine</div>
+          <div class="reel-stat">
+            <span class="stat-arrow">↗</span>
+            <span class="stat-highlight">1,000+ Assets Shipped</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .reel-slider-wrapper {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+    padding: 1.5rem 0 3.5rem;
+    user-select: none;
+  }
+
+  .reel-slider-track {
+    display: flex;
+    width: max-content;
+    animation: reelMarquee 38s linear infinite;
+  }
+
+  .reel-slider-track:hover {
+    animation-play-state: paused;
+  }
+
+  .reel-slider-group {
+    display: flex;
+    gap: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  @keyframes reelMarquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .reel-card {
+    width: clamp(280px, 24vw, 340px);
+    height: clamp(400px, 32vw, 470px);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .reel-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--color-accent);
+  }
+
+  .reel-media-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .reel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+
+  .reel-card:hover .reel-img {
+    transform: scale(1.08);
+  }
+
+  .reel-glow-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0.45) 50%,
+      rgba(12, 13, 16, 0.92) 100%
+    );
+  }
+
+  .reel-play-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: #FFFFFF;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+  }
+
+  .reel-card:hover .reel-play-btn {
+    transform: scale(1.15);
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+  }
+
+  .reel-tag-badge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    padding: 0.25rem 0.65rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.06em;
+  }
+
+  .reel-info {
+    position: relative;
+    z-index: 10;
+    padding: 1.5rem;
+  }
+
+  .reel-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 0.45rem;
+    letter-spacing: -0.02em;
+  }
+
+  .reel-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .stat-arrow {
+    color: var(--color-accent);
+    font-size: 0.95rem;
+  }
+
+  .stat-highlight {
+    color: var(--color-accent);
+  }
+</style>

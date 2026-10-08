@@ -1,0 +1,338 @@
+---
+// StackingCasesSection.astro
+// 3D perspective stacked case studies inspired by Extrafazant.nl's data-featured-stack
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+---
+
+<section class="stacking-featured-section" id="recent-work">
+  <div class="container">
+    <div class="stack-header">
+      <div class="stack-meta">
+        <span class="tag-pill">
+          <span class="tag-dot"></span>
+          <span>CURATED PORTFOLIO</span>
+        </span>
+        <h2 class="stack-title">Recent <span class="heading-alt">Work</span></h2>
+      </div>
+      <div class="stack-subtext">
+        <p>Unmissable, built to be shared. Work that bends reality, breaks scroll inertia, and delivers verified business impact.</p>
+        <a href="/work" class="draw-line-link all-work-link">
+          <span>View all cases ({projects.length})</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 3D Perspective Card Stack Container -->
+    <div class="stack-deck" id="stackDeck">
+      {projects.map((project, index) => {
+        return (
+          <div 
+            class="stack-card-item" 
+            data-stack-card={index}
+            style={`--card-index: ${index};`}
+          >
+            <a 
+              href={`/work/${project.id}`} 
+              class="stack-card-link"
+              data-cursor-text="VIEW CASE →"
+            >
+              <div class="stack-card-inner">
+                <div class="card-visual-col">
+                  <div class="visual-frame">
+                    <img 
+                      src={project.data.heroImage} 
+                      alt={project.data.title}
+                      class="visual-img" 
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                    <div class="visual-overlay"></div>
+                    <span class="card-floating-badge">{project.data.year}</span>
+                  </div>
+                </div>
+
+                <div class="card-content-col">
+                  <div class="card-top-tags">
+                    <span class="category-pill">{project.data.category}</span>
+                    <span class="client-name">{project.data.client}</span>
+                  </div>
+
+                  <h3 class="card-case-title">
+                    {project.data.title}
+                  </h3>
+
+                  <p class="card-case-desc">
+                    {project.data.brief}
+                  </p>
+
+                  <div class="card-deliverables-pills">
+                    {project.data.deliverables.slice(0, 3).map((item) => (
+                      <span class="deliv-pill">✦ {item}</span>
+                    ))}
+                  </div>
+
+                  <div class="card-action-row">
+                    <span class="action-label">Explore Case Study</span>
+                    <span class="action-circle">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M1.5 12.5L12.5 1.5M12.5 1.5H3.5M12.5 1.5V10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stacking-featured-section {
+    padding: clamp(5rem, 8vw, 8rem) 0;
+    position: relative;
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .stack-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: clamp(3rem, 6vw, 4.5rem);
+    border-bottom: 1px solid var(--color-border-light);
+    padding-bottom: 2rem;
+  }
+
+  @media (min-width: 840px) {
+    .stack-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  .stack-title {
+    margin-top: 0.5rem;
+  }
+
+  .stack-subtext {
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stack-subtext p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .all-work-link {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  /* Curated Portfolio Deck (Fluid, High-Speed Scroll Safe) */
+  .stack-deck {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .stack-card-item {
+    position: relative;
+    width: 100%;
+  }
+
+  .stack-card-link {
+    display: block;
+    background-color: var(--card-bg, var(--color-bg-card));
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .stack-card-link:hover {
+    border-color: var(--card-accent, var(--color-accent));
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .stack-card-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 960px) {
+    .stack-card-inner {
+      grid-template-columns: 1.15fr 1fr;
+      align-items: center;
+      gap: 3.5rem;
+    }
+
+    .stack-card-item:nth-child(even) .stack-card-inner {
+      grid-template-columns: 1fr 1.15fr;
+    }
+
+    .stack-card-item:nth-child(even) .card-visual-col {
+      order: 2;
+    }
+
+    .stack-card-item:nth-child(even) .card-content-col {
+      order: 1;
+      padding: 3rem 0 3rem 3.5rem;
+    }
+  }
+
+  .card-visual-col {
+    position: relative;
+  }
+
+  .visual-frame {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--color-bg-secondary);
+  }
+
+  @media (min-width: 960px) {
+    .visual-frame {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  .visual-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .stack-card-link:hover .visual-img {
+    transform: scale(1.06);
+  }
+
+  .visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.5) 100%);
+  }
+
+  .card-floating-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.3rem 0.75rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .card-content-col {
+    padding: 1.75rem 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 960px) {
+    .card-content-col {
+      padding: 3rem 3.5rem 3rem 0;
+    }
+  }
+
+  .card-top-tags {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .category-pill {
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+  }
+
+  .client-name {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .card-case-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.12;
+    color: var(--color-text-primary);
+  }
+
+  .card-case-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .card-deliverables-pills {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .deliv-pill {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-xs);
+  }
+
+  .card-action-row {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .action-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .stack-card-link:hover .action-circle {
+    transform: translate(3px, -3px);
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+  }
+</style>

@@ -1,0 +1,35 @@
+{
+  "brand": {
+    "name": "Vórtice",
+    "legalName": "VÓRTICE // CREATIVE & MOTION ATELIER",
+    "tagline": "We shape stories into unmissable motion people never skip.",
+    "description": "Independent creative atelier in Paris and Mexico City. We blend human emotion, cinema-grade 3D art direction, and high-velocity digital craft to transform everyday attention into cultural impact.",
+    "founded": 2021,
+    "city": "Paris · Mexico City · Global Remote"
+  },
+  "nav": [
+    { "label": "Studio", "href": "/studio" },
+    { "label": "Services", "href": "/services" },
+    { "label": "Work", "href": "/work" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "contact": {
+    "email": "bonjour@vortice.studio",
+    "phone": "+33 1 86 04 00 37",
+    "address": "17 rue André del Sarte, 75018 Paris / Calle Tonalá 142, Roma Norte, CDMX",
+    "instagram": "https://instagram.com/vortice.atelier",
+    "github": "https://github.com/vortice-atelier",
+    "vimeo": "https://vimeo.com/vortice-atelier"
+  },
+  "commercialBanner": {
+    "badge": "Lumux Studio Live Showcase",
+    "text": "Bespoke editorial website demo for motion ateliers, high-end creative bureaus, and content agencies.",
+    "ctaText": "Build your bespoke site with Lumux",
+    "ctaLink": "https://lumuxstudio.com/es"
+  },
+  "seo": {
+    "defaultTitle": "VÓRTICE — Creative & Motion Atelier (Paris · CDMX)",
+    "description": "We shape stories into unmissable motion people never skip. 3D motion, viral social reels, and bespoke digital craft.",
+    "robots": "noindex, nofollow"
+  }
+}

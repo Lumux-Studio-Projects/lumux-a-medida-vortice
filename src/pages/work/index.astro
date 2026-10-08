@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseCard from '../../components/CaseCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const categories = ['All', 'Identidad & Digital', 'Packaging & Campaña', 'Digital & Plataforma', 'Identidad & Dirección de Arte'];
+---
+
+<BaseLayout 
+  title="Selected Work & Case Studies" 
+  description="High-velocity 3D motion, viral social content, and WebGL digital flagships engineered by Vórtice."
+>
+  <div class="portfolio-header">
+    <div class="container">
+      <span class="tag-pill">
+        <span class="tag-dot"></span>
+        <span>VAULT OF WINNERS</span>
+      </span>
+      <h1 class="header-h1">SELECTED WORK <span class="heading-alt">& RECENT RELEASES.</span></h1>
+      <p class="header-lead">
+        A curated selection of performance creatives, 3D spectacles, and bespoke digital platforms engineered for leaders.
+      </p>
+
+      <!-- Category Filter Bar -->
+      <div class="category-filters" id="creativeFilterBar">
+        {categories.map((cat, idx) => (
+          <button 
+            type="button" 
+            class:list={['filter-pill', { active: idx === 0 }]}
+            data-cat={cat}
+            data-cursor-text="FILTER"
+          >
+            {cat === 'All' ? 'All Work' : cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <section class="cases-catalog-section">
+    <div class="container">
+      <div class="cases-grid-catalog" id="casesGrid">
+        {projects.map((project, index) => (
+          <div class="case-grid-wrapper" data-category={project.data.category}>
+            <CaseCard 
+              title={project.data.title}
+              client={project.data.client}
+              category={project.data.category}
+              year={project.data.year}
+              heroImage={project.data.heroImage}
+              slug={project.id}
+              index={index}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div class="empty-state" id="emptyPortfolio" hidden>
+        <p class="empty-msg">No projects found in this selected filter category.</p>
+        <button type="button" class="btn btn-secondary" id="resetCreativeFilterBtn">Reset All Filters</button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .portfolio-header {
+    padding: clamp(4rem, 7vw, 6.5rem) 0 clamp(3rem, 5vw, 4.5rem);
+    background-color: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-h1 {
+    margin: 1.25rem 0 1.5rem;
+  }
+
+  .header-lead {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    max-width: 680px;
+    margin-bottom: 2.5rem;
+  }
+
+  .category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .filter-pill {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    padding: 0.65rem 1.25rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-pill:hover {
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+  }
+
+  .filter-pill.active {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Catalog */
+  .cases-catalog-section {
+    padding: clamp(4rem, 7vw, 7.5rem) 0;
+    background-color: var(--color-bg-secondary);
+  }
+
+  .cases-grid-catalog {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .cases-grid-catalog {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .empty-msg {
+    font-size: 1.15rem;
+    color: var(--color-text-secondary);
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const filterBar = document.getElementById('creativeFilterBar');
+    const casesGrid = document.getElementById('casesGrid');
+    const emptyState = document.getElementById('emptyPortfolio');
+    const resetBtn = document.getElementById('resetCreativeFilterBtn');
+
+    if (!filterBar || !casesGrid) return;
+
+    const filterBtns = filterBar.querySelectorAll('.filter-pill');
+    const cards = casesGrid.querySelectorAll('.case-grid-wrapper');
+
+    function applyFilter(category) {
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const itemCat = card.getAttribute('data-category');
+        const match = category === 'All' || itemCat === category;
+        card.style.display = match ? 'block' : 'none';
+        if (match) visibleCount++;
+      });
+
+      if (emptyState) {
+        emptyState.hidden = visibleCount > 0;
+      }
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.getAttribute('data-cat') || 'All';
+        applyFilter(cat);
+      });
+    });
+
+    resetBtn?.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-cat') === 'All'));
+      applyFilter('All');
+    });
+  })();
+</script>

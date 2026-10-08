@@ -1,0 +1,333 @@
+---
+// MoneyMakersSection.astro
+// "Stuff That Actually Makes You Money" feature cards inspired by FeedForge
+---
+
+<section class="money-makers-section" id="capabilities">
+  <div class="container">
+    <div class="section-top-row">
+      <div>
+        <span class="tag-pill">
+          <span class="tag-dot"></span>
+          <span>HIGH-VELOCITY PRODUCTION</span>
+        </span>
+        <h2 class="section-headline">
+          Stuff that actually <span class="heading-alt">makes you money.</span>
+        </h2>
+      </div>
+      <p class="section-lead">
+        No endless strategy decks gathering dust. We forge high-velocity creatives and digital flagships designed to capture attention and convert.
+      </p>
+    </div>
+
+    <div class="feature-cards-list">
+      <!-- Item 1: 3D Motion & Performance Content -->
+      <div class="feature-card-item card-theme-yellow">
+        <div class="feature-card-left">
+          <div class="feature-badge">
+            <span class="badge-dot dot-yellow"></span>
+            <span>3D & PERFORMANCE CONTENT</span>
+          </div>
+
+          <h3 class="feature-title">Content That Feels Alive. Performs Like Crazy.</h3>
+
+          <p class="feature-desc">
+            We script, direct, and produce high-octane 3D animation, kinetic product reveals, and short-form video assets engineered to arrest thumb scroll in the first 0.6 seconds.
+          </p>
+
+          <a href="/services" class="learn-btn">
+            <span class="btn-curved-arrow">↳</span>
+            <span>Explore Motion Capabilities</span>
+          </a>
+        </div>
+
+        <div class="feature-card-right">
+          <div class="visual-canvas-box bg-box-yellow">
+            <div class="floating-stat-box">
+              <span class="stat-number">0.6s</span>
+              <span class="stat-label">Hook Retention Window</span>
+            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" 
+              alt="3D Motion Asset Simulation"
+              class="feature-asset-img" 
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: Creative Strategy & Angle Architecture -->
+      <div class="feature-card-item card-theme-blue">
+        <div class="feature-card-left">
+          <div class="feature-badge">
+            <span class="badge-dot dot-blue"></span>
+            <span>CREATIVE STRATEGY</span>
+          </div>
+
+          <h3 class="feature-title">Winning Creative Starts Before We Open 3D Software.</h3>
+
+          <p class="feature-desc">
+            We dissect competitor ad fatigue, audit audience psychological triggers, and develop 12+ hook architectures so your production budget only fuels concepts built to win.
+          </p>
+
+          <a href="/services" class="learn-btn">
+            <span class="btn-curved-arrow">↳</span>
+            <span>Learn Strategy Framework</span>
+          </a>
+        </div>
+
+        <div class="feature-card-right">
+          <div class="visual-canvas-box bg-box-blue">
+            <div class="floating-stat-box">
+              <span class="stat-number">3.8x</span>
+              <span class="stat-label">Average Performance Multiplier</span>
+            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" 
+              alt="Strategy Framework Matrix"
+              class="feature-asset-img" 
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: WebGL Flagships & Code -->
+      <div class="feature-card-item card-theme-purple">
+        <div class="feature-card-left">
+          <div class="feature-badge">
+            <span class="badge-dot dot-purple"></span>
+            <span>WEBGL & CREATIVE DEV</span>
+          </div>
+
+          <h3 class="feature-title">Find Winners Faster. Deploy 60FPS Code That Doesn't Melt Phones.</h3>
+
+          <p class="feature-desc">
+            Bespoke interactive 3D digital flagships, WebGL shader interactions, and custom ecommerce experiences with 99+ Google Lighthouse scores and zero slow agency bloat.
+          </p>
+
+          <a href="/services" class="learn-btn">
+            <span class="btn-curved-arrow">↳</span>
+            <span>Explore Creative Code</span>
+          </a>
+        </div>
+
+        <div class="feature-card-right">
+          <div class="visual-canvas-box bg-box-purple">
+            <div class="floating-stat-box">
+              <span class="stat-number">60 FPS</span>
+              <span class="stat-label">Mobile WebGL Performance</span>
+            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80" 
+              alt="WebGL Interactive Code"
+              class="feature-asset-img" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .money-makers-section {
+    padding: clamp(5rem, 8vw, 8rem) 0;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section-top-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  @media (min-width: 860px) {
+    .section-top-row {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  .section-headline {
+    margin-top: 0.5rem;
+    max-width: 650px;
+  }
+
+  .section-lead {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    max-width: 460px;
+  }
+
+  .feature-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .feature-card-item {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 4vw, 3.5rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  @media (min-width: 960px) {
+    .feature-card-item {
+      grid-template-columns: 1.25fr 1fr;
+      gap: 4.5rem;
+    }
+  }
+
+  .feature-card-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+  }
+
+  .feature-card-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-text-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot-yellow { background-color: #FFF96C; box-shadow: 0 0 10px #FFF96C; }
+  .dot-blue { background-color: #8CC9FA; box-shadow: 0 0 10px #8CC9FA; }
+  .dot-purple { background-color: #9893F4; box-shadow: 0 0 10px #9893F4; }
+
+  .feature-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--color-text-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .feature-desc {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    max-width: 580px;
+  }
+
+  .learn-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+
+  .learn-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    transform: translateY(-2px);
+  }
+
+  .btn-curved-arrow {
+    font-size: 1.25rem;
+    line-height: 1;
+    font-weight: 800;
+  }
+
+  /* Right Visual Canvas Box */
+  .visual-canvas-box {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border-light);
+  }
+
+  .bg-box-yellow {
+    background: radial-gradient(circle at center, rgba(255, 249, 108, 0.25) 0%, rgba(24, 10, 5, 0.6) 100%);
+  }
+
+  .bg-box-blue {
+    background: radial-gradient(circle at center, rgba(140, 201, 250, 0.25) 0%, rgba(10, 20, 35, 0.6) 100%);
+  }
+
+  .bg-box-purple {
+    background: radial-gradient(circle at center, rgba(152, 147, 244, 0.25) 0%, rgba(25, 15, 40, 0.6) 100%);
+  }
+
+  .feature-asset-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .feature-card-item:hover .feature-asset-img {
+    transform: scale(1.05);
+  }
+
+  .floating-stat-box {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    color: #D0C9C5;
+  }
+</style>

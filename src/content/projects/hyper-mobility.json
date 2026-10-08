@@ -1,0 +1,34 @@
+{
+  "title": "Hyper Mobility",
+  "client": "Hyper Fleet Technologies Ficticia",
+  "category": "Digital & Plataforma",
+  "year": 2023,
+  "brief": "Diseñar la interfaz de usuario, diseño de sistema y portal de control de flotas para una startup de micro-movilidad eléctrica autónoma.",
+  "concept": "Diseño de alta densidad de información ('data-dense UI') que transforma telemetría de satélite compleja en visualizaciones interactivas nítidas y atractivas.",
+  "deliverables": [
+    "Design System con más de 120 componentes reutilizables",
+    "Dashboard interactivo para monitoreo en tiempo real",
+    "App móvil para operadores de campo",
+    "Guía de estilo y documentación técnica para ingenieros"
+  ],
+  "heroImage": "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1600&q=80",
+  "gallery": [
+    {
+      "src": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Equipo trabajando en prototipos de interfaz",
+      "span": "half"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "alt": "Métricas y gráficas de rendimiento vehicular",
+      "span": "half"
+    }
+  ],
+  "colorPalette": ["#080C14", "#2B59FF", "#F0F4FF", "#18233C"],
+  "credits": {
+    "artDirection": "Vórtice Creative Bureau",
+    "design": "Equipo UI/UX Ficticio",
+    "development": "Equipo Frontend Ficticio"
+  },
+  "featured": true
+}
